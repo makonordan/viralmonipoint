@@ -4,7 +4,6 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const contact = require('./netlify/functions/contact');
-const chat = require('./netlify/functions/chat');
 
 const PORT = process.env.PORT || 8000;
 
@@ -20,7 +19,6 @@ function mount(route, fn) {
 }
 
 mount('/api/contact', contact);
-mount('/api/chat', chat);
 
 app.listen(PORT, () => {
   console.log(`ViralMoniPoint running at http://localhost:${PORT}`);

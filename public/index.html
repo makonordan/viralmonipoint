@@ -939,7 +939,7 @@
 <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with the ViralMoniPoint assistant">
   <div class="cp-head">
     <span class="av"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7.5 15H16L20 25L28.5 5H38L24.5 35H15.5Z" fill="#0b0b0c"/><path d="M4.5 2.5V14.5L14.5 8.5Z" fill="#E4161B"/></svg></span>
-    <div class="who"><strong>ViralMoniPoint assistant</strong><span class="st">AI · replies in seconds</span></div>
+    <div class="who"><strong>ViralMoniPoint assistant</strong><span class="st">Instant answers</span></div>
     <button type="button" id="chatReset" aria-label="Start a new chat" title="New chat"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
     <button type="button" id="chatClose" aria-label="Close chat"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
@@ -948,7 +948,7 @@
     <textarea id="chatInput" rows="1" maxlength="1500" placeholder="Type your message…" aria-label="Your message"></textarea>
     <button type="submit" id="chatSend" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
   </form>
-  <div class="cp-foot">AI assistant · Never share passwords or login codes in chat</div>
+  <div class="cp-foot">Automated assistant · Never share passwords or login codes</div>
 </div>
 
 <script>
@@ -1042,66 +1042,340 @@
   })();
 </script>
 <script>
+  // Guided chat assistant: runs entirely in the browser, no AI and no paid services.
+  // Leads are sent through the existing /api/contact endpoint.
   (function(){
-    var GREETING = "Hi! I'm the ViralMoniPoint assistant. I can help you figure out the fastest route to getting your YouTube channel monetized. What's your channel about?";
-    var QUICK = ["Which package fits my channel?", "What changes on Feb 1, 2027?", "I need 4,000 watch hours"];
-    var MAX_TURNS = 38;
-    var KEY = 'vmp-chat-v1';
+    var WHATSAPP = '2348037723164'; // Daniel's WhatsApp, international format without "+"
+    var WHATSAPP_DISPLAY = '+234 803 772 3164';
+
+    var PKG = {
+      wh: {
+        name: 'Watch Hours Only',
+        value: 'Watch Hours Only ($300, 1-month plan)',
+        text: "Watch Hours Only: $300 CAD, 1-month plan (single payment).\n\nIncludes:\n- A personalized watch-hour strategy session\n- A content calendar built around retention\n- A free Shorts tutorial series\n- A written action plan you keep\n\nIt's the fastest route to qualify before YouTube's Feb 1, 2027 change."
+      },
+      lf: {
+        name: 'Long-Form Monetization',
+        value: 'Long-Form Monetization ($400/mo, 3-month plan)',
+        text: "Long-Form Monetization (Faceless AI Niche): $400 CAD/month on a 3-month plan ($1,200 total).\n\nWe build and run a long-form channel for you:\n- Niche research and channel setup\n- 3 long-form videos per week\n- A daily 1-minute Short, Monday to Saturday\n- All creation, editing and posting handled\n- Ongoing strategy and a monthly progress report\n\nWork-Until-Eligible: if you're not eligible by the end of the 3 months (and you've held up your end), we keep working at no extra charge until you are.\n\nStart by Nov 1 to finish before the Feb 1, 2027 change."
+      },
+      sh: {
+        name: 'Shorts Monetization',
+        value: 'Shorts Monetization AI Automation ($1,100 one-time)',
+        text: "Shorts Monetization (Faceless AI Niche): $1,100 CAD one-time, 3-month plan paid upfront.\n\nIncludes:\n- Niche selection and channel setup\n- An AI automation system: script, voice and edit templates\n- Your first batch of Shorts produced and scheduled\n- A hand-off guide so you can keep it running\n\nIt's aimed at the Shorts views threshold: 10M views in 90 days today, 20M from Feb 1, 2027. Start by Nov 1 to finish before the change."
+      }
+    };
+
+    var TEXT = {
+      greeting: "Hi! 👋 I'm the ViralMoniPoint assistant. I can help you pick the right package, answer questions, or get you started. What would you like to do?",
+      feb: "On February 1, 2027, YouTube doubles the entry bar for new Partner Program applicants:\n- Watch hours: 4,000 → 8,000 (last 365 days)\n- Shorts views: 10M → 20M (last 90 days)\n- Subscribers: stays at 1,000\n\nIf you're already monetized, you keep it. YouTube reviews applications after you qualify and that can take weeks, so aim to qualify and apply before the end of December.",
+      requirements: "To join the YouTube Partner Program today you need 1,000 subscribers plus either 4,000 public watch hours in the last 365 days or 10 million Shorts views in the last 90 days. From Feb 1, 2027 that becomes 8,000 watch hours or 20M Shorts views (subscribers stay at 1,000).",
+      prices: "Our packages (prices in CAD):\n- Watch Hours Only: $300, 1-month plan\n- Long-Form Monetization: $400/month, 3-month plan ($1,200 total)\n- Shorts Monetization: $1,100 one-time, 3-month plan\n\nTap one to see what's included.",
+      time: "It depends on your channel and niche. Watch Hours Only is a 1-month plan, and Long-Form and Shorts run over 3 months. We'll give you an honest estimate for your channel on a free 15-minute discovery call. We don't promise a fixed number of days, because YouTube's approval isn't in anyone's control.",
+      guarantee: "YouTube makes the final approval decision, so nobody can honestly guarantee it. What we do promise: on Long-Form Monetization, if you're not eligible by the end of the 3 months (and you've held up your end), we keep working at no extra charge until you are.",
+      safe: "No bots, ever. We never use purchased views, watch time or subscribers. Those break YouTube's Terms of Service and put channels at risk. Every video carries real scripting, voice and editing.",
+      ownership: "You always keep full ownership of your channel. We work as a manager on your YouTube Brand Account, never a transfer. Your channel, your AdSense, your payouts. Please never share your password with anyone, including us.",
+      payment: "Prices are in CAD. The team will share payment options after your free 15-minute discovery call, once we've confirmed the right package for you.",
+      call: "Every package starts with a free 15-minute discovery call. We look at your channel (or niche idea), talk through where you're stuck, and recommend the right plan. No obligation.",
+      upgrade: "Yes. Lots of clients start with Watch Hours Only, then move into full done-for-you production once they see the plan working.",
+      faceless: "Faceless means you never have to appear on camera. Our Long-Form and Shorts packages build channels in faceless AI niches, with scripting, voice and editing handled for you.",
+      reports: "You get a monthly progress report, so you always know exactly where your channel stands against YouTube's thresholds.",
+      age: "YouTube requires the person receiving payouts to be 18 or older with an AdSense account. If you're under 18, a parent or guardian will need to be involved.",
+      fallback: "Good question. I don't have a ready answer for that one, but Daniel can help you directly on WhatsApp. Or pick one of these:"
+    };
+
+    // Keyword answers for typed questions. The entry with the most matching words wins.
+    var FAQ = [
+      { k: ['price', 'cost', 'how much', 'fee', 'charge', 'afford', 'expensive', 'cheap', 'package', 'packages', 'plan', 'plans', '$'], a: 'prices' },
+      { k: ['2027', 'february', 'feb', '8000', '8,000', 'double', 'doubling', 'new rule', 'new requirement', 'change', 'changing', 'deadline'], a: 'feb' },
+      { k: ['requirement', 'requirements', 'eligible', 'eligibility', 'qualify', 'threshold', '1000 sub', '1,000 sub', '4000', '4,000', 'partner program', 'ypp'], a: 'requirements' },
+      { k: ['how long', 'how fast', 'how soon', 'days', 'weeks', 'months', 'quick', 'quickly', 'fast', 'timeline', 'time'], a: 'time' },
+      { k: ['guarantee', 'guaranteed', 'promise', 'refund', 'money back'], a: 'guarantee' },
+      { k: ['bot', 'bots', 'fake', 'safe', 'legit', 'legal', 'strike', 'ban', 'banned', 'terminate', 'risk', 'real views', 'policy'], a: 'safe' },
+      { k: ['own', 'ownership', 'password', 'login', 'access', 'account', 'adsense', 'payout', 'control'], a: 'ownership' },
+      { k: ['pay', 'payment', 'currency', 'cad', 'dollar', 'naira', 'transfer', 'card', 'bank'], a: 'payment' },
+      { k: ['call', 'discovery', 'meeting', 'consult', 'consultation', 'talk'], a: 'call' },
+      { k: ['upgrade', 'combine', 'switch', 'later', 'both'], a: 'upgrade' },
+      { k: ['faceless', 'face', 'camera', 'ai niche', 'anonymous'], a: 'faceless' },
+      { k: ['report', 'reports', 'reporting', 'progress', 'update', 'updates'], a: 'reports' },
+      { k: ['age', 'old', 'under 18', '18', 'minor', 'teen', 'teenager'], a: 'age' },
+      { k: ['watch hours only', 'watch hour'], pkg: 'wh' },
+      { k: ['long form', 'long-form', 'longform', 'long video', 'long videos'], pkg: 'lf' },
+      { k: ['shorts', 'short videos', 'short video', '20m', '10m', '10 million', '20 million'], pkg: 'sh' },
+      { k: ['whatsapp', 'human', 'person', 'daniel', 'agent', 'contact', 'phone', 'number', 'reach you'], a: 'human' },
+      { k: ['start', 'sign up', 'signup', 'get started', 'interested', 'ready', 'join', 'buy', 'order', 'hire'], a: 'start' },
+      { k: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'hiya', 'yo'], a: 'hello' },
+      { k: ['thanks', 'thank you', 'thank', 'cheers', 'ok thanks'], a: 'thanks' }
+    ];
+
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     var launch = document.getElementById('chatLaunch');
     var panel = document.getElementById('chatPanel');
     var body = document.getElementById('chatBody');
     var form = document.getElementById('chatForm');
     var input = document.getElementById('chatInput');
-    var send = document.getElementById('chatSend');
 
-    var state = load();
-    var busy = false;
-
-    function load(){
-      try {
-        var saved = JSON.parse(sessionStorage.getItem(KEY));
-        if (saved && Array.isArray(saved.history)) return saved;
-      } catch (e) {}
-      return { history: [], leadSubmitted: false };
-    }
-    function save(){
-      try { sessionStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    var s; // conversation state
+    function fresh(){
+      s = { pkg: null, answers: {}, lead: {}, step: null, sent: false };
     }
 
+    // ---------- rendering ----------
+    function scroll(){ body.scrollTop = body.scrollHeight; }
+    function clearButtons(){ body.querySelectorAll('.cp-quick').forEach(function(q){ q.remove(); }); }
     function bubble(cls, text){
       var el = document.createElement('div');
       el.className = 'bubble ' + cls;
       el.textContent = text;
       body.appendChild(el);
-      body.scrollTop = body.scrollHeight;
+      scroll();
       return el;
     }
-
-    function render(){
-      body.innerHTML = '';
-      bubble('bot', GREETING);
-      state.history.forEach(function(m){ bubble(m.role === 'user' ? 'me' : 'bot', m.content); });
-      if (state.leadSubmitted) bubble('ok', '✓ Your details were sent to the team');
-      if (state.history.length === 0) {
-        var q = document.createElement('div');
-        q.className = 'cp-quick';
-        QUICK.forEach(function(t){
-          var b = document.createElement('button');
-          b.type = 'button';
-          b.textContent = t;
-          b.addEventListener('click', function(){ submit(t); });
-          q.appendChild(b);
+    function buttons(opts){
+      var q = document.createElement('div');
+      q.className = 'cp-quick';
+      opts.forEach(function(o){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = o[0];
+        b.addEventListener('click', function(){
+          clearButtons();
+          bubble('me', o[0]);
+          o[1]();
         });
-        body.appendChild(q);
-      }
-      body.scrollTop = body.scrollHeight;
+        q.appendChild(b);
+      });
+      body.appendChild(q);
+      scroll();
+    }
+    // Bot reply with a short "typing" pause so it reads like a conversation.
+    function say(text, opts, then){
+      clearButtons();
+      var t = document.createElement('div');
+      t.className = 'cp-typing';
+      t.innerHTML = '<i></i><i></i><i></i>';
+      body.appendChild(t);
+      scroll();
+      setTimeout(function(){
+        t.remove();
+        bubble('bot', text);
+        if (opts && opts.length) buttons(opts);
+        if (then) then();
+      }, Math.min(350 + text.length * 4, 1100));
     }
 
+    function waLink(){
+      var lines = ["Hi Daniel, I came from viralmonipoint.com."];
+      if (s.lead.name) lines.push("My name is " + s.lead.name + ".");
+      if (s.pkg) lines.push("I'm interested in " + PKG[s.pkg].name + ".");
+      if (s.lead.channel) lines.push("My channel: " + s.lead.channel);
+      return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lines.join(' '));
+    }
+    function openWhatsApp(){
+      window.open(waLink(), '_blank', 'noopener');
+      say("I've opened WhatsApp for you. If it didn't open, message Daniel on " + WHATSAPP_DISPLAY + ".", mainOpts());
+    }
+
+    // ---------- menus ----------
+    function mainOpts(){
+      return [
+        ['Help me pick a package', pickStart],
+        ['See packages & prices', showPrices],
+        ['What changes on Feb 1, 2027?', function(){ say(TEXT.feb, afterInfo()); }],
+        ['Chat with Daniel on WhatsApp', openWhatsApp]
+      ];
+    }
+    function afterInfo(){
+      return [
+        ['Help me pick a package', pickStart],
+        ['Get started', startLead],
+        ['Ask something else', askFree]
+      ];
+    }
+    function showPrices(){
+      say(TEXT.prices, [
+        ['Watch Hours Only', function(){ showPkg('wh'); }],
+        ['Long-Form Monetization', function(){ showPkg('lf'); }],
+        ['Shorts Monetization', function(){ showPkg('sh'); }]
+      ]);
+    }
+    function showPkg(key){
+      s.pkg = key;
+      say(PKG[key].text, [
+        ['Get started with this', startLead],
+        ['See other packages', showPrices],
+        ['Ask a question', askFree]
+      ]);
+    }
+    function askFree(){
+      s.step = null;
+      say("Sure, type your question below. For example: \"Is it safe?\" or \"How long does it take?\"");
+    }
+
+    // ---------- package picker ----------
+    function pickStart(){
+      say("Great, just a couple of quick questions. Do you already have a YouTube channel?", [
+        ['Yes, I have a channel', function(){ s.answers.channel = 'Has a channel'; pickFormat(true); }],
+        ['No, build me a faceless one', function(){ s.answers.channel = 'Wants a new faceless channel'; pickFormat(false); }]
+      ]);
+    }
+    function pickFormat(hasChannel){
+      say(hasChannel ? "What do you mostly post?" : "Would you prefer long videos or Shorts?", [
+        ['Long videos', function(){ s.answers.format = 'Long videos'; hasChannel ? pickHours() : recommend('lf'); }],
+        ['Shorts', function(){ s.answers.format = 'Shorts'; recommend('sh'); }]
+      ]);
+    }
+    function pickHours(){
+      say("Roughly how many watch hours does your channel have in the last 365 days? You'll find it in YouTube Studio → Analytics.", [
+        ['Under 1,000', function(){ s.answers.hours = 'Under 1,000'; recommend('wh', true); }],
+        ['1,000 – 3,000', function(){ s.answers.hours = '1,000–3,000'; recommend('wh'); }],
+        ['Over 3,000', function(){ s.answers.hours = 'Over 3,000'; recommend('wh'); }],
+        ['Not sure', function(){ s.answers.hours = 'Not sure'; recommend('wh'); }]
+      ]);
+    }
+    function recommend(key, lowHours){
+      s.pkg = key;
+      var intro = {
+        wh: lowHours
+          ? "For a channel still early on watch hours, Watch Hours Only is the fastest and most affordable way to close the gap. If you'd rather hand everything over, Long-Form Monetization is the done-for-you option."
+          : "Based on that, I'd recommend Watch Hours Only. It's built for existing channels that need to close the watch-hour gap fast.",
+        lf: "For a new faceless channel with long videos, I'd recommend Long-Form Monetization. We build and run it for you.",
+        sh: "For Shorts, I'd recommend Shorts Monetization. It's built around the Shorts views threshold."
+      }[key];
+      say(intro, null, function(){
+        say(PKG[key].text, [
+          ['Get started with this', startLead],
+          lowHours ? ['Tell me about Long-Form', function(){ showPkg('lf'); }] : ['See all packages', showPrices],
+          ['Ask a question', askFree]
+        ]);
+      });
+    }
+
+    // ---------- lead capture ----------
+    function startLead(){
+      if (s.sent) {
+        say("You're already on our list, and the team will reach out soon. Want to message Daniel on WhatsApp in the meantime?", [
+          ['Chat with Daniel on WhatsApp', openWhatsApp], ['Back to menu', menu]
+        ]);
+        return;
+      }
+      say("Let's get you started. It takes about a minute. First, what's your name?");
+      s.step = 'name';
+    }
+    function collect(text){
+      var v = text.trim();
+      if (s.step === 'name') {
+        s.lead.name = v.slice(0, 80);
+        s.step = 'email';
+        say("Nice to meet you, " + s.lead.name.split(' ')[0] + "! What's your email address?");
+      } else if (s.step === 'email') {
+        if (!EMAIL_RE.test(v)) { say("That doesn't look like a valid email. Could you check it and send it again?"); return; }
+        s.lead.email = v;
+        s.step = 'phone';
+        say("And your WhatsApp number, with country code (for example +234 803 000 0000)?", [['Skip', function(){ s.lead.phone = ''; askChannel(); }]]);
+      } else if (s.step === 'phone') {
+        s.lead.phone = v.slice(0, 30);
+        askChannel();
+      } else if (s.step === 'channel') {
+        s.lead.channel = v.slice(0, 200);
+        confirmLead();
+      }
+    }
+    function askChannel(){
+      s.step = 'channel';
+      say("Last one: what's your channel link or name?", [['I don\'t have one yet', function(){ s.lead.channel = 'No channel yet'; confirmLead(); }]]);
+    }
+    function confirmLead(){
+      s.step = null;
+      var summary = "Here's what I'll send to the team:\n" +
+        "- Name: " + s.lead.name + "\n" +
+        "- Email: " + s.lead.email + "\n" +
+        "- WhatsApp: " + (s.lead.phone || 'Not provided') + "\n" +
+        "- Channel: " + s.lead.channel + "\n" +
+        "- Package: " + (s.pkg ? PKG[s.pkg].name : 'Not sure yet') + "\n\n" +
+        "Is that right? They'll contact you to book your free 15-minute discovery call.";
+      say(summary, [['Yes, send it', sendLead], ['Start over', startLead]]);
+    }
+    function sendLead(){
+      var notes = ['Lead from the website chat assistant.'];
+      if (s.answers.channel) notes.push('Channel status: ' + s.answers.channel);
+      if (s.answers.format) notes.push('Format: ' + s.answers.format);
+      if (s.answers.hours) notes.push('Watch hours (365d): ' + s.answers.hours);
+      notes.push('Channel: ' + s.lead.channel);
+      var t = document.createElement('div');
+      t.className = 'cp-typing';
+      t.innerHTML = '<i></i><i></i><i></i>';
+      body.appendChild(t);
+      scroll();
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: s.lead.name,
+          email: s.lead.email,
+          phone: s.lead.phone,
+          package: s.pkg ? PKG[s.pkg].value : '',
+          message: notes.join('\n')
+        })
+      })
+      .then(function(res){ if (!res.ok) throw new Error(); })
+      .then(function(){
+        t.remove();
+        s.sent = true;
+        bubble('ok', '✓ Your details were sent to the team');
+        say("Thanks, " + s.lead.name.split(' ')[0] + "! The team will reach out shortly to book your free discovery call. Want to speed things up? Message Daniel on WhatsApp now.", [
+          ['Chat with Daniel on WhatsApp', openWhatsApp], ['Back to menu', menu]
+        ]);
+      })
+      .catch(function(){
+        t.remove();
+        say("Sorry, that didn't go through. You can try again, or message Daniel directly on WhatsApp.", [
+          ['Try again', sendLead], ['Chat with Daniel on WhatsApp', openWhatsApp]
+        ]);
+      });
+    }
+
+    // ---------- typed messages ----------
+    function normalise(t){ return ' ' + t.toLowerCase().replace(/[^a-z0-9$,.\s-]/g, ' ').replace(/\s+/g, ' ') + ' '; }
+    function answer(text){
+      var t = normalise(text);
+      var best = null, bestScore = 0;
+      FAQ.forEach(function(f){
+        var score = 0;
+        f.k.forEach(function(k){
+          var hit = k.length <= 3 ? t.indexOf(' ' + k + ' ') !== -1 : t.indexOf(k) !== -1;
+          if (hit) score += k.split(' ').length + (k.length > 5 ? 1 : 0);
+        });
+        if (score > bestScore) { bestScore = score; best = f; }
+      });
+      if (!best) { say(TEXT.fallback, [['Chat with Daniel on WhatsApp', openWhatsApp]].concat(mainOpts().slice(0, 3))); return; }
+      if (best.pkg) { showPkg(best.pkg); return; }
+      if (best.a === 'prices') { showPrices(); return; }
+      if (best.a === 'human') { say("Daniel is happy to chat directly.", [['Open WhatsApp', openWhatsApp], ['Back to menu', menu]]); return; }
+      if (best.a === 'start') { startLead(); return; }
+      if (best.a === 'hello') { say("Hi there! How can I help?", mainOpts()); return; }
+      if (best.a === 'thanks') { say("You're welcome! Anything else I can help with?", mainOpts()); return; }
+      say(TEXT[best.a], afterInfo());
+    }
+    function handle(text){
+      text = (text || '').trim();
+      if (!text) return;
+      clearButtons();
+      bubble('me', text);
+      input.value = '';
+      autosize();
+      if (s.step) collect(text); else answer(text);
+    }
+
+    function menu(){ s.step = null; say("What would you like to do next?", mainOpts()); }
+
+    // ---------- panel ----------
+    var started = false;
     function open(){
       panel.classList.add('open');
       launch.setAttribute('aria-expanded', 'true');
-      render();
+      if (!started) { started = true; fresh(); bubble('bot', TEXT.greeting); buttons(mainOpts()); }
       setTimeout(function(){ input.focus(); }, 50);
     }
     function close(){
@@ -1109,74 +1383,24 @@
       launch.setAttribute('aria-expanded', 'false');
       launch.focus();
     }
-
-    function submit(text){
-      text = (text || '').trim();
-      if (!text || busy) return;
-      if (state.history.length >= MAX_TURNS) {
-        bubble('note', 'This chat is getting long. Tap the ↻ button to start a new one, or use the contact form on this page.');
-        return;
-      }
-      var quick = body.querySelector('.cp-quick');
-      if (quick) quick.remove();
-
-      state.history.push({ role: 'user', content: text });
-      bubble('me', text);
-      input.value = '';
-      autosize();
-      setBusy(true);
-      var typing = document.createElement('div');
-      typing.className = 'cp-typing';
-      typing.innerHTML = '<i></i><i></i><i></i>';
-      body.appendChild(typing);
-      body.scrollTop = body.scrollHeight;
-
-      fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: state.history, leadSubmitted: state.leadSubmitted })
-      })
-      .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
-      .then(function(r){
-        typing.remove();
-        if (!r.ok || !r.data.reply) throw new Error(r.data && r.data.error);
-        var justSubmitted = r.data.leadSubmitted && !state.leadSubmitted;
-        state.history.push({ role: 'assistant', content: r.data.reply });
-        state.leadSubmitted = !!r.data.leadSubmitted;
-        save();
-        bubble('bot', r.data.reply);
-        if (justSubmitted) bubble('ok', '✓ Your details were sent to the team');
-      })
-      .catch(function(err){
-        typing.remove();
-        state.history.pop();
-        save();
-        input.value = text;
-        autosize();
-        bubble('note', (err && err.message) || 'Message not sent. Please check your connection and try again.');
-      })
-      .finally(function(){ setBusy(false); input.focus(); });
-    }
-
-    function setBusy(b){ busy = b; send.disabled = b; }
     function autosize(){ input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; }
 
     launch.addEventListener('click', open);
     document.getElementById('chatClose').addEventListener('click', close);
     document.getElementById('chatReset').addEventListener('click', function(){
-      if (busy) return;
-      state = { history: [], leadSubmitted: false };
-      save();
-      render();
+      body.innerHTML = '';
+      fresh();
+      bubble('bot', TEXT.greeting);
+      buttons(mainOpts());
       input.focus();
     });
     document.querySelectorAll('[data-open-chat]').forEach(function(el){
       el.addEventListener('click', function(e){ e.preventDefault(); open(); });
     });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
-    form.addEventListener('submit', function(e){ e.preventDefault(); submit(input.value); });
+    form.addEventListener('submit', function(e){ e.preventDefault(); handle(input.value); });
     input.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(input.value); }
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handle(input.value); }
     });
     input.addEventListener('input', autosize);
   })();
