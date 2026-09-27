@@ -169,6 +169,71 @@
   .section-pad{padding-block:72px;}
   .alt-bg{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 
+  /* ---------- Deadline banner ---------- */
+  .deadline-bar{background:var(--ink);color:#fff;font-size:13.5px;font-weight:600;}
+  .deadline-bar a{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;text-align:center;padding:10px 20px;text-decoration:none;}
+  .deadline-bar .pill{background:var(--red);color:#fff;font-family:'Montserrat';font-weight:800;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;flex:none;}
+  .deadline-bar b{color:var(--yellow);font-weight:800;}
+  .deadline-bar .go{color:var(--yellow);font-weight:800;white-space:nowrap;}
+  .deadline-bar a:hover .go{text-decoration:underline;}
+  @media (max-width:560px){ .deadline-bar{font-size:12.5px;} .deadline-bar a{padding:9px 16px;gap:6px 8px;} }
+
+  /* ---------- Countdown ---------- */
+  .countdown{display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--ink);color:#fff;border-radius:14px;padding:12px 16px;margin:0 0 28px;}
+  .countdown .label{font-size:13px;font-weight:700;line-height:1.35;max-width:15ch;}
+  .countdown .label b{color:var(--yellow);}
+  .countdown .units{display:flex;gap:6px;}
+  .countdown .u{background:#1f1f23;border-radius:9px;min-width:50px;padding:6px 6px 5px;text-align:center;}
+  .countdown .u span{display:block;font-family:'Montserrat';font-weight:900;font-size:20px;line-height:1;color:var(--yellow);font-variant-numeric:tabular-nums;}
+  .countdown .u small{display:block;font-size:9.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9a9aa2;margin-top:4px;}
+  @media (max-width:420px){ .countdown .u{min-width:44px;} .countdown .u span{font-size:17px;} }
+
+  /* ---------- Why now ---------- */
+  .why-now{background:var(--ink);color:#fff;}
+  .why-now .section-head h2{color:#fff;}
+  .why-now .section-head p{color:#c9c9cf;}
+  .why-now .eyebrow{color:var(--yellow);}
+  .compare{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:stretch;}
+  @media (max-width:900px){ .compare{grid-template-columns:1fr;} }
+  .ctable{background:#141417;border:1px solid #26262b;border-radius:18px;overflow:hidden;}
+  .ctable table{width:100%;border-collapse:collapse;}
+  .ctable th, .ctable td{padding:16px 18px;text-align:left;border-bottom:1px solid #26262b;}
+  .ctable tr:last-child td{border-bottom:0;}
+  .ctable th{font-family:'Montserrat';font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#9a9aa2;background:#1a1a1e;}
+  .ctable th.new{color:var(--yellow);}
+  .ctable td{font-size:14px;color:#d8d8dd;}
+  .ctable td.req{font-weight:700;color:#fff;}
+  .ctable td.req small{display:block;font-weight:600;font-size:12px;color:#86868d;margin-top:2px;}
+  .ctable .num{font-family:'Montserrat';font-weight:900;font-size:22px;letter-spacing:-0.02em;color:#fff;white-space:nowrap;}
+  .ctable .num.up{color:#ff4d52;}
+  .ctable .tag{display:inline-block;margin-left:8px;vertical-align:3px;font-family:'Montserrat';font-weight:800;font-size:10px;letter-spacing:0.06em;padding:3px 7px;border-radius:999px;}
+  .ctable .tag.x2{background:var(--red);color:#fff;}
+  .ctable .tag.same{background:#26262b;color:#c9c9cf;}
+  @media (max-width:560px){ .ctable th, .ctable td{padding:12px 10px;} .ctable .num{font-size:17px;} .ctable .tag{display:block;margin:4px 0 0;width:max-content;} }
+  .now-side{display:flex;flex-direction:column;gap:14px;}
+  .now-card{border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start;}
+  .now-card.keep{background:var(--yellow);color:var(--ink);}
+  .now-card.tip{background:#141417;border:1px solid #26262b;}
+  .now-card .ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .now-card.keep .ico{background:var(--ink);}
+  .now-card.keep .ico svg{stroke:var(--yellow);}
+  .now-card.tip .ico{background:var(--red);}
+  .now-card.tip .ico svg{stroke:#fff;}
+  .now-card .ico svg{width:19px;height:19px;}
+  .now-card h4{margin:0 0 4px;font-size:15px;font-weight:800;}
+  .now-card p{margin:0;font-size:13.5px;line-height:1.5;}
+  .now-card.keep p{color:#2b2b2f;}
+  .now-card.tip p{color:#c9c9cf;}
+  .now-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:26px;}
+  .now-cta .src{font-size:13px;color:#9a9aa2;}
+  .now-cta .src a{color:#fff;text-underline-offset:3px;}
+
+  /* Deadline notes on package cards */
+  .deadline-note{display:flex;gap:8px;align-items:flex-start;margin:0;padding:10px 12px;border-radius:10px;font-size:12.5px;font-weight:700;line-height:1.4;background:#fdecec;color:#a8141a;}
+  .deadline-note svg{width:15px;height:15px;flex:none;margin-top:1px;stroke:currentColor;}
+  .deadline-note.fast{background:var(--yellow-soft);color:#6b4f00;}
+  .card.featured .deadline-note{background:#2a1112;color:#ff8a8d;}
+
   /* ---------- How it works ---------- */
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
   @media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr);}}
@@ -388,6 +453,13 @@
 </head>
 <body>
 
+<div class="deadline-bar">
+  <a href="#why-now">
+    <span class="pill">Feb 1, 2027</span>
+    <span>YouTube doubles the watch-hour requirement to <b>8,000</b>.</span>
+    <span class="go">Get monetized under today's rules →</span>
+  </a>
+</div>
 <header>
   <div class="container navbar">
     <a href="#top" class="logo" aria-label="ViralMoniPoint home">
@@ -395,6 +467,7 @@
       <span class="wordmark"><span class="name">ViralMoniPoint</span><span class="tag">Creator Services</span></span>
     </a>
     <nav class="links" id="navLinks">
+      <a href="#why-now">Why Now</a>
       <a href="#how">How It Works</a>
       <a href="#packages">Packages</a>
       <a href="#testimonials">Testimonials</a>
@@ -418,6 +491,15 @@
     <p class="eyebrow">YouTube Monetization Services</p>
     <h1 class="display">Get your channel<br><span class="accent">monetized</span><span class="dot">.</span></h1>
     <p class="lead">Three ways to hit the YouTube Partner Program, matched to where your channel actually is today. Real strategy, transparent reporting, no bots and no shortcuts.</p>
+<div class="countdown" id="countdown" aria-live="off">
+      <span class="label">Time left to qualify at <b>4,000 hours</b></span>
+      <span class="units">
+        <span class="u"><span data-cd="d">--</span><small>Days</small></span>
+        <span class="u"><span data-cd="h">--</span><small>Hrs</small></span>
+        <span class="u"><span data-cd="m">--</span><small>Min</small></span>
+        <span class="u"><span data-cd="s">--</span><small>Sec</small></span>
+      </span>
+    </div>
     <div class="hero-actions">
       <a href="#packages" class="btn btn-primary">See Packages</a>
       <a href="#how" class="btn btn-secondary">How It Works</a>
@@ -461,6 +543,37 @@
     </figure>
   </section>
 
+  <!-- WHY NOW -->
+  <section id="why-now" class="section-pad why-now">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Why now</p>
+        <h2>The bar doubles on February 1, 2027</h2>
+        <p>YouTube is raising the entry requirements for new Partner Program applicants. Channels that qualify under today's rules get in at half the watch time — and once you're in, you stay in.</p>
+      </div>
+      <div class="compare">
+        <div class="ctable">
+          <table>
+            <thead><tr><th>Requirement</th><th>Today</th><th class="new">From Feb 1, 2027</th></tr></thead>
+            <tbody>
+              <tr><td class="req">Watch hours<small>Last 365 days</small></td><td><span class="num">4,000</span></td><td><span class="num up">8,000</span><span class="tag x2">2×</span></td></tr>
+              <tr><td class="req">Shorts views<small>Last 90 days</small></td><td><span class="num">10M</span></td><td><span class="num up">20M</span><span class="tag x2">2×</span></td></tr>
+              <tr><td class="req">Subscribers</td><td><span class="num">1,000</span></td><td><span class="num">1,000</span><span class="tag same">No change</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="now-side">
+          <div class="now-card keep"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="M9 12l2 2 4-4"/></svg></span><div><h4>Already monetized? You keep it.</h4><p>Existing Partner Program members aren't affected by the new thresholds.</p></div></div>
+          <div class="now-card tip"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h4>Aim for the end of December</h4><p>YouTube reviews applications after you qualify, and reviews can take weeks. Qualify and apply early so you're not racing the deadline.</p></div></div>
+        </div>
+      </div>
+      <div class="now-cta">
+        <a href="#packages" class="btn btn-primary">Beat the deadline — see packages</a>
+        <span class="src">Source: <a href="https://support.google.com/youtube/answer/12843009?hl=en" target="_blank" rel="noopener">YouTube Help — Changes to the YouTube Partner Program</a></span>
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
   <section id="how" class="section-pad alt-bg">
     <div class="container">
@@ -484,7 +597,7 @@
       <div class="section-head">
         <p class="eyebrow">Pricing</p>
         <h2>Pick your path</h2>
-        <p>Every package works toward YouTube's real eligibility requirements — 1,000 subscribers and 4,000 watch hours, or 10 million Shorts views in 90 days.</p>
+        <p>Every package works toward YouTube's real eligibility requirements — 1,000 subscribers and 4,000 watch hours, or 10 million Shorts views in 90 days. Those are today's numbers; from Feb 1, 2027 the watch-hour and Shorts thresholds double.</p>
       </div>
       <div class="cards">
 
@@ -493,6 +606,7 @@
           <h3>Watch Hours Only</h3>
           <div class="price-row"><span class="price mono">$300</span><span class="price-unit">one-time</span></div>
           <p class="price-note">1-month plan · single payment</p>
+          <p class="deadline-note fast"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8Z"/></svg><span>Fastest route to qualify before the Feb 1, 2027 change</span></p>
           <p class="desc">Stuck below the 3,000 or 4,000 watch-hour line? Get a personalized plan to close the gap, plus a free set of Shorts tutorials.</p>
           <ul class="includes">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Personalized watch-hour strategy session</li>
@@ -509,6 +623,7 @@
           <h3>Long-Form Monetization — Faceless AI Niche</h3>
           <div class="price-row"><span class="price mono">$400</span><span class="price-unit">/month</span></div>
           <p class="price-note">3-month plan · $1,200 total</p>
+          <p class="deadline-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span>Start by Nov 1 to finish before the Feb 1, 2027 change</span></p>
           <p class="desc">A full long-form channel built and run for you in a faceless AI niche, produced and optimized every month for three months.</p>
           <ul class="includes">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Niche research &amp; channel setup</li>
@@ -526,6 +641,7 @@
           <h3>Shorts Monetization — Faceless AI Niche</h3>
           <div class="price-row"><span class="price mono">$1,100</span><span class="price-unit">one-time</span></div>
           <p class="price-note">3-month plan · billed as a single one-time payment</p>
+          <p class="deadline-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span>Start by Nov 1 — the Shorts bar rises to 20M views on Feb 1, 2027</span></p>
           <p class="desc">A fully automated Shorts system in one niche, built once and handed to you, aimed at the Shorts view threshold for monetization.</p>
           <ul class="includes">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Niche selection &amp; channel setup</li>
@@ -830,6 +946,28 @@
         submitBtn.textContent = 'Send & book my discovery call';
       });
     });
+  })();
+</script>
+<script>
+  (function(){
+    var box = document.getElementById('countdown');
+    if (!box) return;
+    // Midnight Pacific time on Feb 1, 2027 (YouTube is US-based); shown in the visitor's local clock.
+    var target = Date.UTC(2027, 1, 1, 8, 0, 0);
+    var el = {};
+    ['d','h','m','s'].forEach(function(k){ el[k] = box.querySelector('[data-cd="' + k + '"]'); });
+    function pad(n){ return n < 10 ? '0' + n : String(n); }
+    function tick(){
+      var left = target - Date.now();
+      if (left <= 0) { box.style.display = 'none'; clearInterval(timer); return; }
+      var t = Math.floor(left / 1000);
+      el.d.textContent = Math.floor(t / 86400);
+      el.h.textContent = pad(Math.floor(t % 86400 / 3600));
+      el.m.textContent = pad(Math.floor(t % 3600 / 60));
+      el.s.textContent = pad(t % 60);
+    }
+    var timer = setInterval(tick, 1000);
+    tick();
   })();
 </script>
 </body>
