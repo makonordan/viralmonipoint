@@ -440,6 +440,56 @@
     .toast{right:4px;bottom:-26px;padding:8px 10px 8px 8px;} .toast strong{font-size:12px;} .toast .ic{width:28px;height:28px;} }
   .contact-visual figcaption{margin-top:48px;font-size:11.5px;color:var(--grey-dim);text-align:center;}
 
+  /* ---------- Chat widget ---------- */
+  .chat-launch{
+    position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:10px;
+    background:var(--yellow);color:var(--ink);border:0;border-radius:999px;padding:12px 18px 12px 12px;cursor:pointer;
+    font-family:inherit;font-weight:800;font-size:14.5px;box-shadow:0 14px 30px -10px rgba(11,11,12,0.45);
+  }
+  .chat-launch .ic{width:36px;height:36px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;flex:none;position:relative;}
+  .chat-launch .ic svg{width:18px;height:18px;stroke:var(--yellow);}
+  .chat-launch .ic::after{content:"";position:absolute;right:-1px;top:-1px;width:10px;height:10px;border-radius:50%;background:var(--red);border:2px solid var(--yellow);}
+  .chat-launch:hover{background:var(--yellow-deep);}
+  .chat-launch[aria-expanded="true"]{display:none;}
+  @media (max-width:560px){ .chat-launch{right:14px;bottom:14px;padding:10px;} .chat-launch .lbl{display:none;} }
+
+  .chat-panel{
+    position:fixed;right:20px;bottom:20px;z-index:70;width:380px;height:min(600px, calc(100vh - 40px));
+    background:var(--paper);border-radius:20px;box-shadow:0 30px 70px -20px rgba(11,11,12,0.55);
+    display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line);
+  }
+  .chat-panel.open{display:flex;}
+  @media (max-width:560px){ .chat-panel{right:0;bottom:0;width:100%;height:100%;height:100dvh;border-radius:0;border:0;} }
+  .cp-head{background:var(--ink);color:#fff;padding:14px 14px 14px 16px;display:flex;align-items:center;gap:10px;border-bottom:4px solid var(--yellow);flex:none;}
+  .cp-head .av{width:38px;height:38px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;flex:none;}
+  .cp-head .av svg{width:20px;height:20px;}
+  .cp-head .who{flex:1;min-width:0;}
+  .cp-head strong{display:block;font-family:'Montserrat';font-weight:800;font-size:14.5px;}
+  .cp-head .st{font-size:11.5px;color:#7bd8a6;font-weight:600;}
+  .cp-head .st::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#35c47c;margin-right:6px;vertical-align:1px;}
+  .cp-head button{background:none;border:0;color:#c9c9cf;width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;}
+  .cp-head button:hover{background:#26262b;color:#fff;}
+  .cp-head button svg{width:18px;height:18px;stroke:currentColor;}
+  .cp-body{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px;background:var(--paper-2);}
+  .bubble{max-width:85%;padding:10px 13px;border-radius:16px;font-size:14px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;}
+  .bubble.bot{background:var(--paper);border:1px solid var(--line);color:var(--text);align-self:flex-start;border-bottom-left-radius:5px;}
+  .bubble.me{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:5px;}
+  .bubble.note{align-self:center;background:#fdecec;color:#a8141a;font-size:12.5px;font-weight:600;border-radius:10px;max-width:95%;text-align:center;}
+  .bubble.ok{align-self:center;background:#e3f5ec;color:var(--green);font-size:12.5px;font-weight:700;border-radius:10px;}
+  .cp-typing{align-self:flex-start;display:flex;gap:4px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;}
+  .cp-typing i{width:7px;height:7px;border-radius:50%;background:#b4b3ad;display:block;animation:blink 1.2s infinite ease-in-out;}
+  .cp-typing i:nth-child(2){animation-delay:.2s;} .cp-typing i:nth-child(3){animation-delay:.4s;}
+  .cp-quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;}
+  .cp-quick button{background:var(--paper);border:1.5px solid var(--ink);color:var(--ink);border-radius:999px;padding:7px 12px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;}
+  .cp-quick button:hover{background:var(--yellow);border-color:var(--yellow);}
+  .cp-form{display:flex;flex-direction:row;gap:8px;align-items:flex-end;padding:10px 12px;border-top:1px solid var(--line);background:var(--paper);flex:none;}
+  .cp-form textarea{flex:1;resize:none;border:1.5px solid var(--line-strong);border-radius:12px;padding:10px 12px;font-family:inherit;font-size:15px;line-height:1.4;max-height:120px;min-height:44px;color:var(--text);}
+  .cp-form textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--yellow-soft);}
+  .cp-form button{width:44px;height:44px;border-radius:12px;border:0;background:var(--yellow);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;}
+  .cp-form button:disabled{opacity:.5;cursor:default;}
+  .cp-form button svg{width:18px;height:18px;stroke:var(--ink);}
+  .cp-foot{font-size:10.5px;color:var(--grey-dim);text-align:center;padding:0 12px 10px;background:var(--paper);flex:none;}
+
   /* ---------- Footer ---------- */
   footer{background:var(--ink);color:#fff;padding-block:40px 36px;border-top:6px solid var(--yellow);}
   footer .logo{color:#fff;}
@@ -768,7 +818,8 @@
               <div class="msg in">Send us your channel link and current watch hours. We'll recommend the right plan on a free 15-minute call.</div>
               <div class="typing"><i></i><i></i><i></i></div>
             </div>
-            <a href="#contact" class="btn btn-primary btn-block">Book a free discovery call</a>
+            <a href="#contact" class="btn btn-primary btn-block" data-open-chat>Chat with our assistant</a>
+            <a href="#contact" class="btn btn-block" style="margin-top:10px;color:#fff;border-color:#3a3a40">Or book a discovery call</a>
             <div class="help-meta"><span><b>15 min</b> · free call</span><span><b>No</b> obligation</span></div>
           </div>
         </aside>
@@ -880,6 +931,26 @@
   </div>
 </footer>
 
+<!-- CHAT WIDGET -->
+<button class="chat-launch" id="chatLaunch" aria-controls="chatPanel" aria-expanded="false">
+  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span>
+  <span class="lbl">Chat with us</span>
+</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with the ViralMoniPoint assistant">
+  <div class="cp-head">
+    <span class="av"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7.5 15H16L20 25L28.5 5H38L24.5 35H15.5Z" fill="#0b0b0c"/><path d="M4.5 2.5V14.5L14.5 8.5Z" fill="#E4161B"/></svg></span>
+    <div class="who"><strong>ViralMoniPoint assistant</strong><span class="st">AI · replies in seconds</span></div>
+    <button type="button" id="chatReset" aria-label="Start a new chat" title="New chat"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+    <button type="button" id="chatClose" aria-label="Close chat"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="cp-body" id="chatBody" aria-live="polite"></div>
+  <form class="cp-form" id="chatForm">
+    <textarea id="chatInput" rows="1" maxlength="1500" placeholder="Type your message…" aria-label="Your message"></textarea>
+    <button type="submit" id="chatSend" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </form>
+  <div class="cp-foot">AI assistant · Never share passwords or login codes in chat</div>
+</div>
+
 <script>
   (function(){
     var toggle = document.getElementById('navToggle');
@@ -968,6 +1039,146 @@
     }
     var timer = setInterval(tick, 1000);
     tick();
+  })();
+</script>
+<script>
+  (function(){
+    var GREETING = "Hi! I'm the ViralMoniPoint assistant. I can help you figure out the fastest route to getting your YouTube channel monetized. What's your channel about?";
+    var QUICK = ["Which package fits my channel?", "What changes on Feb 1, 2027?", "I need 4,000 watch hours"];
+    var MAX_TURNS = 38;
+    var KEY = 'vmp-chat-v1';
+
+    var launch = document.getElementById('chatLaunch');
+    var panel = document.getElementById('chatPanel');
+    var body = document.getElementById('chatBody');
+    var form = document.getElementById('chatForm');
+    var input = document.getElementById('chatInput');
+    var send = document.getElementById('chatSend');
+
+    var state = load();
+    var busy = false;
+
+    function load(){
+      try {
+        var saved = JSON.parse(sessionStorage.getItem(KEY));
+        if (saved && Array.isArray(saved.history)) return saved;
+      } catch (e) {}
+      return { history: [], leadSubmitted: false };
+    }
+    function save(){
+      try { sessionStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    }
+
+    function bubble(cls, text){
+      var el = document.createElement('div');
+      el.className = 'bubble ' + cls;
+      el.textContent = text;
+      body.appendChild(el);
+      body.scrollTop = body.scrollHeight;
+      return el;
+    }
+
+    function render(){
+      body.innerHTML = '';
+      bubble('bot', GREETING);
+      state.history.forEach(function(m){ bubble(m.role === 'user' ? 'me' : 'bot', m.content); });
+      if (state.leadSubmitted) bubble('ok', '✓ Your details were sent to the team');
+      if (state.history.length === 0) {
+        var q = document.createElement('div');
+        q.className = 'cp-quick';
+        QUICK.forEach(function(t){
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.textContent = t;
+          b.addEventListener('click', function(){ submit(t); });
+          q.appendChild(b);
+        });
+        body.appendChild(q);
+      }
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function open(){
+      panel.classList.add('open');
+      launch.setAttribute('aria-expanded', 'true');
+      render();
+      setTimeout(function(){ input.focus(); }, 50);
+    }
+    function close(){
+      panel.classList.remove('open');
+      launch.setAttribute('aria-expanded', 'false');
+      launch.focus();
+    }
+
+    function submit(text){
+      text = (text || '').trim();
+      if (!text || busy) return;
+      if (state.history.length >= MAX_TURNS) {
+        bubble('note', 'This chat is getting long. Tap the ↻ button to start a new one, or use the contact form on this page.');
+        return;
+      }
+      var quick = body.querySelector('.cp-quick');
+      if (quick) quick.remove();
+
+      state.history.push({ role: 'user', content: text });
+      bubble('me', text);
+      input.value = '';
+      autosize();
+      setBusy(true);
+      var typing = document.createElement('div');
+      typing.className = 'cp-typing';
+      typing.innerHTML = '<i></i><i></i><i></i>';
+      body.appendChild(typing);
+      body.scrollTop = body.scrollHeight;
+
+      fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: state.history, leadSubmitted: state.leadSubmitted })
+      })
+      .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+      .then(function(r){
+        typing.remove();
+        if (!r.ok || !r.data.reply) throw new Error(r.data && r.data.error);
+        var justSubmitted = r.data.leadSubmitted && !state.leadSubmitted;
+        state.history.push({ role: 'assistant', content: r.data.reply });
+        state.leadSubmitted = !!r.data.leadSubmitted;
+        save();
+        bubble('bot', r.data.reply);
+        if (justSubmitted) bubble('ok', '✓ Your details were sent to the team');
+      })
+      .catch(function(err){
+        typing.remove();
+        state.history.pop();
+        save();
+        input.value = text;
+        autosize();
+        bubble('note', (err && err.message) || 'Message not sent. Please check your connection and try again.');
+      })
+      .finally(function(){ setBusy(false); input.focus(); });
+    }
+
+    function setBusy(b){ busy = b; send.disabled = b; }
+    function autosize(){ input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; }
+
+    launch.addEventListener('click', open);
+    document.getElementById('chatClose').addEventListener('click', close);
+    document.getElementById('chatReset').addEventListener('click', function(){
+      if (busy) return;
+      state = { history: [], leadSubmitted: false };
+      save();
+      render();
+      input.focus();
+    });
+    document.querySelectorAll('[data-open-chat]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.preventDefault(); open(); });
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
+    form.addEventListener('submit', function(e){ e.preventDefault(); submit(input.value); });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(input.value); }
+    });
+    input.addEventListener('input', autosize);
   })();
 </script>
 </body>
