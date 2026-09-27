@@ -1,16 +1,8 @@
-require('dotenv').config();
-const path = require('path');
-const express = require('express');
 const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL;
 const FROM_EMAIL = process.env.FROM_EMAIL || 'ViralMoniPoint <onboarding@resend.dev>';
-const PORT = process.env.PORT || 8000;
-
-const app = express();
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
@@ -20,15 +12,34 @@ function escapeHtml(str) {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-app.post('/api/contact', async (req, res) => {
-  const { name, email, phone, package: pkg, message } = req.body || {};
+function json(statusCode, body) {
+  return {
+    statusCode,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  };
+}
+
+exports.handler = async (event) => {
+  if (event.httpMethod !== 'POST') {
+    return json(405, { error: 'Method not allowed.' });
+  }
+
+  let data;
+  try {
+    data = JSON.parse(event.body || '{}');
+  } catch {
+    return json(400, { error: 'Invalid request.' });
+  }
+
+  const { name, email, phone, package: pkg, message } = data;
 
   if (!name || !email || !EMAIL_RE.test(email)) {
-    return res.status(400).json({ error: 'A valid name and email are required.' });
+    return json(400, { error: 'A valid name and email are required.' });
   }
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       reply_to: email,
@@ -43,13 +54,10 @@ app.post('/api/contact', async (req, res) => {
         <p>${escapeHtml(message || '').replace(/\n/g, '<br>')}</p>
       `,
     });
-    res.json({ ok: true });
+    if (error) throw error;
+    return json(200, { ok: true });
   } catch (err) {
     console.error('Resend send failed:', err);
-    res.status(502).json({ error: 'Failed to send email.' });
+    return json(502, { error: 'Failed to send email.' });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`ViralMoniPoint running at http://localhost:${PORT}`);
-});
+};
