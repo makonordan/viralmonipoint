@@ -1,6 +1,5 @@
 const { Resend } = require('resend');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL;
 const FROM_EMAIL = process.env.FROM_EMAIL || 'ViralMoniPoint <onboarding@resend.dev>';
 
@@ -38,7 +37,13 @@ exports.handler = async (event) => {
     return json(400, { error: 'A valid name and email are required.' });
   }
 
+  if (!process.env.RESEND_API_KEY || !TO_EMAIL) {
+    console.error('RESEND_API_KEY or CONTACT_TO_EMAIL is not set.');
+    return json(500, { error: 'Email is not configured yet. Please try again later.' });
+  }
+
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
