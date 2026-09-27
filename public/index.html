@@ -77,8 +77,54 @@
   }
 
   /* ---------- Hero ---------- */
-  .hero{padding-block:76px 60px;}
-  h1{font-size:clamp(40px,7.4vw,78px);line-height:1;margin:0 0 24px;color:var(--ink);text-transform:uppercase;}
+  .hero{padding-block:64px 60px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);gap:48px;align-items:center;}
+  @media (max-width:960px){ .hero{grid-template-columns:1fr;gap:56px;padding-block:52px 56px;} }
+  h1{font-size:clamp(40px,6.2vw,72px);line-height:1;margin:0 0 24px;color:var(--ink);text-transform:uppercase;}
+
+  /* Hero visual: phone + floating stat cards */
+  .hero-visual{position:relative;margin:0 auto;width:100%;max-width:440px;aspect-ratio:1/1.08;}
+  .hero-visual .blob{position:absolute;inset:8% 4% 4% 8%;background:var(--yellow);border-radius:46% 54% 42% 58% / 52% 44% 56% 48%;}
+  .hero-visual .ring{position:absolute;inset:2% 0 10% 14%;border:2px dashed rgba(11,11,12,0.18);border-radius:50%;}
+  .phone{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-4deg);width:54%;aspect-ratio:9/17.5;
+    background:var(--ink);border-radius:30px;padding:8px;box-shadow:0 34px 60px -24px rgba(11,11,12,0.55);
+  }
+  .phone .scr{width:100%;height:100%;background:#fff;border-radius:23px;overflow:hidden;display:flex;flex-direction:column;}
+  .phone .notch{width:34%;height:14px;background:var(--ink);border-radius:0 0 10px 10px;margin:0 auto;flex:none;}
+  .phone .banner{height:17%;background:linear-gradient(135deg,var(--ink) 0 55%,var(--red) 55% 62%,var(--yellow) 62%);flex:none;}
+  .phone .prof{display:flex;align-items:center;gap:7px;padding:0 10px;margin-top:-14px;}
+  .phone .prof .av{width:32px;height:32px;border-radius:50%;background:var(--yellow);border:3px solid #fff;flex:none;display:flex;align-items:center;justify-content:center;}
+  .phone .prof .av svg{width:16px;height:16px;}
+  .phone .prof .meta{padding-top:14px;min-width:0;}
+  .phone .prof strong{display:block;font-family:'Montserrat';font-weight:800;font-size:10.5px;color:var(--ink);white-space:nowrap;}
+  .phone .prof span{font-size:8.5px;color:var(--grey);white-space:nowrap;}
+  .phone .sub{margin:9px 10px 8px;background:var(--ink);color:#fff;border-radius:999px;text-align:center;font-weight:800;font-size:9px;padding:6px 0;}
+  .phone .vids{display:flex;flex-direction:column;gap:7px;padding:0 10px;}
+  .phone .vid{display:flex;gap:7px;align-items:center;}
+  .phone .th{width:46%;aspect-ratio:16/9;border-radius:6px;background:#26262b;position:relative;flex:none;overflow:hidden;}
+  .phone .th::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-40%,-50%);border-left:9px solid var(--red);border-top:6px solid transparent;border-bottom:6px solid transparent;}
+  .phone .vid:nth-child(2) .th{background:#3a3a40;}
+  .phone .vid:nth-child(3) .th{background:#1c1c20;}
+  .phone .lines{flex:1;display:flex;flex-direction:column;gap:4px;}
+  .phone .lines i{display:block;height:5px;border-radius:3px;background:#e6e4dd;}
+  .phone .lines i:last-child{width:60%;background:#f0eee8;}
+  .float{
+    position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 18px 36px -18px rgba(11,11,12,0.4);padding:10px 12px;display:flex;align-items:center;gap:10px;
+  }
+  .float .k{font-size:10.5px;font-weight:600;color:var(--grey);line-height:1.2;}
+  .float .v{font-family:'Montserrat';font-weight:900;font-size:17px;letter-spacing:-0.02em;color:var(--ink);line-height:1.1;}
+  .float .v small{font-size:10px;font-weight:700;color:var(--grey);letter-spacing:0;}
+  .f-hours{left:-2%;top:3%;}
+  .f-hours svg{width:40px;height:40px;flex:none;transform:rotate(-90deg);}
+  .f-subs{right:-3%;top:40%;}
+  .f-subs .up{font-size:10px;font-weight:800;color:var(--green);}
+  .f-mon{left:4%;bottom:9%;background:var(--ink);border-color:var(--ink);}
+  .f-mon .ic{width:30px;height:30px;border-radius:9px;background:var(--red);display:flex;align-items:center;justify-content:center;flex:none;}
+  .f-mon .ic svg{width:12px;height:12px;fill:#fff;}
+  .f-mon strong{display:block;font-family:'Montserrat';font-weight:800;font-size:12.5px;color:#fff;}
+  .f-mon span{font-size:10px;color:var(--yellow);font-weight:700;}
+  @media (max-width:420px){ .f-subs{right:0;} .f-hours{left:0;} .float{padding:8px 10px;} .float .v{font-size:15px;} .f-hours svg{width:32px;height:32px;} }
   h1 .accent{position:relative;display:inline-block;z-index:0;padding-inline:0.08em;}
   h1 .accent::before{
     content:"";position:absolute;z-index:-1;left:-0.12em;right:-0.04em;top:22%;bottom:4%;
@@ -182,8 +228,55 @@
   .why-item h4{margin:0 0 4px;font-size:15px;font-weight:800;color:var(--ink);}
   .why-item p{margin:0;font-size:13.5px;color:var(--grey);line-height:1.5;}
 
+  /* ---------- Testimonials ---------- */
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:900px){.t-grid{grid-template-columns:1fr;}}
+  .t-card{background:var(--paper);border:1px solid var(--line-strong);border-radius:18px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:18px;}
+  .t-card .qmark{width:40px;height:40px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;flex:none;}
+  .t-card .qmark svg{width:18px;height:18px;fill:var(--ink);}
+  .t-card blockquote{margin:0;font-size:15px;line-height:1.65;color:var(--text);flex:1;}
+  .t-result{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--line);}
+  .t-result .stat{font-family:'Montserrat';font-weight:900;font-size:26px;letter-spacing:-0.02em;color:var(--ink);line-height:1;}
+  .t-result .stat-label{font-size:13px;font-weight:600;color:var(--grey);}
+  .t-person{display:flex;align-items:center;gap:12px;}
+  .t-card blockquote + .t-person{padding-top:16px;border-top:1px solid var(--line);}
+  .t-person .avatar{
+    width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--yellow);flex:none;
+    display:flex;align-items:center;justify-content:center;font-family:'Montserrat';font-weight:800;font-size:15px;
+  }
+  .t-person .who{display:flex;flex-direction:column;gap:2px;}
+  .t-person .name{font-weight:800;font-size:14.5px;color:var(--ink);}
+  .t-person .channel{font-size:12.5px;color:var(--grey);}
+
   /* ---------- FAQ ---------- */
   .faq{max-width:760px;}
+  .faq-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:48px;align-items:start;}
+  @media (max-width:960px){ .faq-grid{grid-template-columns:1fr;gap:36px;} .faq-side{max-width:560px;} }
+  .faq-side{position:sticky;top:100px;}
+  @media (max-width:960px){ .faq-side{position:static;} }
+  .help-card{background:var(--ink);color:#fff;border-radius:22px;padding:26px 22px 24px;position:relative;overflow:hidden;}
+  .help-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--yellow);}
+  .help-card .deco{position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:var(--yellow);opacity:0.14;}
+  .help-card h3{font-family:'Montserrat';font-weight:900;font-size:22px;letter-spacing:-0.02em;margin:0 0 6px;position:relative;}
+  .help-card > p{margin:0 0 18px;font-size:14px;line-height:1.55;color:#c9c9cf;position:relative;}
+  .chat{background:#17171a;border:1px solid #26262b;border-radius:16px;padding:14px 12px;display:flex;flex-direction:column;gap:10px;margin-bottom:18px;position:relative;}
+  .chat .top{display:flex;align-items:center;gap:9px;padding-bottom:10px;border-bottom:1px solid #26262b;}
+  .chat .top .av{width:30px;height:30px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;flex:none;}
+  .chat .top .av svg{width:16px;height:16px;}
+  .chat .top strong{display:block;font-size:12.5px;font-weight:800;}
+  .chat .top div span{font-size:10.5px;color:#7bd8a6;font-weight:600;}
+  .chat .top div span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#35c47c;margin-right:5px;vertical-align:1px;}
+  .msg{max-width:84%;padding:9px 12px;border-radius:14px;font-size:12.5px;line-height:1.45;}
+  .msg.in{background:#26262b;color:#ececf0;border-bottom-left-radius:4px;align-self:flex-start;}
+  .msg.out{background:var(--yellow);color:var(--ink);font-weight:600;border-bottom-right-radius:4px;align-self:flex-end;}
+  .typing{display:flex;gap:4px;padding:10px 12px;background:#26262b;border-radius:14px;border-bottom-left-radius:4px;align-self:flex-start;}
+  .typing i{width:6px;height:6px;border-radius:50%;background:#86868d;display:block;animation:blink 1.2s infinite ease-in-out;}
+  .typing i:nth-child(2){animation-delay:.2s;} .typing i:nth-child(3){animation-delay:.4s;}
+  @keyframes blink{0%,80%,100%{opacity:.3;transform:translateY(0);}40%{opacity:1;transform:translateY(-2px);}}
+  @media (prefers-reduced-motion:reduce){ .typing i{animation:none;} }
+  .help-card .btn{position:relative;}
+  .help-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:#9a9aa2;position:relative;}
+  .help-meta b{color:var(--yellow);font-weight:800;}
   details{border:1px solid var(--line);border-radius:14px;background:var(--paper);margin-bottom:12px;overflow:hidden;}
   details[open]{border-color:var(--ink);}
   summary{
@@ -211,6 +304,60 @@
   .field textarea{resize:vertical;min-height:100px;}
   #formNote{font-size:13.5px;font-weight:600;color:var(--green);display:none;margin:4px 0 0;}
 
+  .contact-grid{display:grid;grid-template-columns:minmax(0,500px) minmax(0,1fr);gap:56px;align-items:center;}
+  @media (max-width:960px){ .contact-grid{grid-template-columns:1fr;gap:40px;} .contact-visual{max-width:560px;} }
+
+  /* ---------- Laptop mockup ---------- */
+  .contact-visual{margin:0;position:relative;}
+  .laptop{position:relative;}
+  .laptop .lid{background:#1c1c20;border-radius:16px 16px 6px 6px;padding:10px 10px 14px;box-shadow:0 30px 60px -30px rgba(11,11,12,0.55);}
+  .laptop .cam{width:6px;height:6px;border-radius:50%;background:#3a3a40;margin:0 auto 7px;}
+  .laptop .base{height:14px;margin:0 -5%;background:linear-gradient(#d9d8d3,#b9b8b2);border-radius:0 0 14px 14px;position:relative;}
+  .laptop .base::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:18%;height:6px;background:#a8a7a1;border-radius:0 0 8px 8px;}
+  .screen{background:#fff;border-radius:6px;overflow:hidden;font-size:11px;color:var(--text);aspect-ratio:16/10;display:grid;grid-template-rows:auto 1fr;}
+  .screen .bar{display:flex;align-items:center;gap:6px;padding:7px 10px;background:var(--paper-2);border-bottom:1px solid var(--line);}
+  .screen .bar i{width:7px;height:7px;border-radius:50%;background:#d4d1c7;display:block;}
+  .screen .bar i:first-child{background:var(--red);}
+  .screen .bar span{margin-left:8px;font-weight:700;font-size:10px;color:var(--grey);}
+  .screen .body{display:grid;grid-template-columns:34px 1fr;min-height:0;}
+  .screen .side{background:var(--ink);display:flex;flex-direction:column;align-items:center;gap:9px;padding-top:10px;}
+  .screen .side b{width:14px;height:14px;border-radius:4px;background:#34343a;display:block;}
+  .screen .side b.on{background:var(--yellow);}
+  .screen .main{padding:10px 12px;display:flex;flex-direction:column;gap:8px;min-width:0;}
+  .screen .head{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .screen .ch{display:flex;align-items:center;gap:7px;min-width:0;}
+  .screen .ch .av{width:20px;height:20px;border-radius:50%;background:var(--yellow);flex:none;}
+  .screen .ch strong{font-family:'Montserrat';font-weight:800;font-size:11.5px;white-space:nowrap;}
+  .screen .ok{display:flex;align-items:center;gap:4px;background:#e3f5ec;color:var(--green);font-weight:800;font-size:9.5px;padding:3px 8px;border-radius:999px;white-space:nowrap;}
+  .screen .ok svg{width:10px;height:10px;stroke:currentColor;}
+  .screen .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+  .screen .tile{border:1px solid var(--line);border-radius:7px;padding:6px 7px;min-width:0;}
+  .screen .tile .k{font-size:8.5px;color:var(--grey);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .screen .tile .v{font-family:'Montserrat';font-weight:900;font-size:15px;letter-spacing:-0.02em;color:var(--ink);margin-top:2px;}
+  .screen .tile .v small{font-size:9px;font-weight:700;color:var(--grey);letter-spacing:0;}
+  .screen .meter{height:4px;border-radius:2px;background:var(--line);margin-top:5px;overflow:hidden;}
+  .screen .meter i{display:block;height:100%;width:100%;background:var(--yellow);}
+  .screen .up{font-size:8.5px;font-weight:800;color:var(--green);margin-top:4px;}
+  .screen .chart{border:1px solid var(--line);border-radius:7px;padding:6px 7px 2px;flex:1;min-height:0;display:flex;flex-direction:column;}
+  .screen .chart .k{font-size:8.5px;color:var(--grey);font-weight:600;}
+  .screen .chart svg{width:100%;flex:1;min-height:0;display:block;}
+  .toast{
+    position:absolute;right:4%;bottom:-30px;background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:10px 14px 10px 10px;display:flex;align-items:center;gap:10px;box-shadow:0 18px 40px -16px rgba(11,11,12,0.35);
+  }
+  .toast .ic{width:34px;height:34px;border-radius:10px;background:var(--red);display:flex;align-items:center;justify-content:center;flex:none;}
+  .toast .ic svg{width:14px;height:14px;fill:#fff;}
+  .toast strong{display:block;font-family:'Montserrat';font-weight:800;font-size:13px;color:var(--ink);}
+  .toast span{font-size:11.5px;color:var(--grey);}
+  @media (max-width:560px){
+    .laptop .base{margin:0 -3%;}
+    .screen{aspect-ratio:auto;}
+    .screen .tile .v{font-size:13px;}
+    .screen .tile .v small{display:none;}
+    .screen .chart svg{height:64px;flex:none;}
+    .toast{right:4px;bottom:-26px;padding:8px 10px 8px 8px;} .toast strong{font-size:12px;} .toast .ic{width:28px;height:28px;} }
+  .contact-visual figcaption{margin-top:48px;font-size:11.5px;color:var(--grey-dim);text-align:center;}
+
   /* ---------- Footer ---------- */
   footer{background:var(--ink);color:#fff;padding-block:40px 36px;border-top:6px solid var(--yellow);}
   footer .logo{color:#fff;}
@@ -233,6 +380,7 @@
     <nav class="links" id="navLinks">
       <a href="#how">How It Works</a>
       <a href="#packages">Packages</a>
+      <a href="#testimonials">Testimonials</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -249,6 +397,7 @@
 
   <!-- HERO -->
   <section class="hero container">
+    <div class="hero-copy">
     <p class="eyebrow">YouTube Monetization Services</p>
     <h1 class="display">Get your channel<br><span class="accent">monetized</span><span class="dot">.</span></h1>
     <p class="lead">Three ways to hit the YouTube Partner Program, matched to where your channel actually is today. Real strategy, transparent reporting, no bots and no shortcuts.</p>
@@ -261,6 +410,38 @@
       <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>You keep full channel ownership</span>
       <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Monthly transparent reporting</span>
     </div>
+    </div>
+    <figure class="hero-visual" aria-hidden="true" style="margin-block:0">
+      <div class="blob"></div>
+      <div class="ring"></div>
+      <div class="phone"><div class="scr">
+        <div class="notch"></div>
+        <div class="banner"></div>
+        <div class="prof">
+          <span class="av"><svg viewBox="0 0 40 40"><path d="M7.5 15H16L20 25L28.5 5H38L24.5 35H15.5Z" fill="#0b0b0c"/><path d="M4.5 2.5V14.5L14.5 8.5Z" fill="#E4161B"/></svg></span>
+          <span class="meta"><strong>Your Channel</strong><span>1.2K subscribers · 48 videos</span></span>
+        </div>
+        <div class="sub">Subscribed</div>
+        <div class="vids">
+          <div class="vid"><span class="th"></span><span class="lines"><i></i><i></i></span></div>
+          <div class="vid"><span class="th"></span><span class="lines"><i></i><i></i></span></div>
+          <div class="vid"><span class="th"></span><span class="lines"><i></i><i></i></span></div>
+          <div class="vid"><span class="th"></span><span class="lines"><i></i><i></i></span></div>
+          <div class="vid"><span class="th"></span><span class="lines"><i></i><i></i></span></div>
+        </div>
+      </div></div>
+      <div class="float f-hours">
+        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#e6e4dd" stroke-width="5"/><circle cx="20" cy="20" r="16" fill="none" stroke="#FFC400" stroke-width="5" stroke-linecap="round" stroke-dasharray="100.5 100.5"/></svg>
+        <div><div class="k">Watch hours</div><div class="v">4,000<small> ✓</small></div></div>
+      </div>
+      <div class="float f-subs">
+        <div><div class="k">Subscribers</div><div class="v">1,284</div><div class="up">▲ past 1,000</div></div>
+      </div>
+      <div class="float f-mon">
+        <span class="ic"><svg viewBox="0 0 12 12"><path d="M3.5 2L10 6L3.5 10Z"/></svg></span>
+        <div><strong>Monetization on</strong><span>Partner Program</span></div>
+      </div>
+    </figure>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -291,9 +472,10 @@
       <div class="cards">
 
         <div class="card">
-          <div class="card-top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><p class="kicker">Strategy + Tutorials</p></div>
+          <div class="card-top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><p class="kicker">1-Month Plan</p></div>
           <h3>Watch Hours Only</h3>
           <div class="price-row"><span class="price mono">$300</span><span class="price-unit">one-time</span></div>
+          <p class="price-note">1-month plan · single payment</p>
           <p class="desc">Stuck below the 3,000 or 4,000 watch-hour line? Get a personalized plan to close the gap, plus a free set of Shorts tutorials.</p>
           <ul class="includes">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Personalized watch-hour strategy session</li>
@@ -301,7 +483,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Free bonus: Shorts tutorial series</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>One written action plan, yours to keep</li>
           </ul>
-          <button class="btn btn-secondary btn-block pick-package" data-package="Watch Hours Only ($300 one-time)">Choose this package</button>
+          <button class="btn btn-secondary btn-block pick-package" data-package="Watch Hours Only ($300, 1-month plan)">Choose this package</button>
         </div>
 
         <div class="card featured">
@@ -372,6 +554,46 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Testimonials</p>
+        <h2>What creators say</h2>
+        <p>Real channels, real results — in our clients' own words.</p>
+      </div>
+      <div class="t-grid">
+        <figure class="t-card" style="margin:0">
+          <div class="qmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h5l2-5V6H4v7h3l-3 5Zm9 0h5l2-5V6h-7v7h3l-3 5Z"/></svg></div>
+          <blockquote>I can't even believe my eyes. I saw my watch hours increase per day and everything looked very legitimate. I was a little scared I could get a strike, but I did not, just like I was guaranteed.</blockquote>
+          <div class="t-result"><span class="stat">&lt;30 days</span><span class="stat-label">to complete my watch hours</span></div>
+          <figcaption class="t-person">
+            <span class="avatar" aria-hidden="true">M</span>
+            <span class="who"><span class="name">Mimi</span><span class="channel">United States</span></span>
+          </figcaption>
+        </figure>
+        <figure class="t-card" style="margin:0">
+          <div class="qmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h5l2-5V6H4v7h3l-3 5Zm9 0h5l2-5V6h-7v7h3l-3 5Z"/></svg></div>
+          <blockquote>I live in Ghana and came across this link. I got my watch hours in less than 21 days. I am happy I contacted you. I can now post more videos to start earning from YouTube.</blockquote>
+          <div class="t-result"><span class="stat">&lt;21 days</span><span class="stat-label">to reach my watch hours</span></div>
+          <figcaption class="t-person">
+            <span class="avatar" aria-hidden="true">VG</span>
+            <span class="who"><span class="name">VG</span><span class="channel">Ghana</span></span>
+          </figcaption>
+        </figure>
+        <figure class="t-card" style="margin:0">
+          <div class="qmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h5l2-5V6H4v7h3l-3 5Zm9 0h5l2-5V6h-7v7h3l-3 5Z"/></svg></div>
+          <blockquote>I was happy to share my YouTube channel with you so you could do your thing. I am happy I have finally hit the 4,000 monetization threshold and can now focus on getting subscribers.</blockquote>
+          <div class="t-result"><span class="stat">4,000</span><span class="stat-label">watch hours reached</span></div>
+          <figcaption class="t-person">
+            <span class="avatar" aria-hidden="true">R</span>
+            <span class="who"><span class="name">Ruth</span><span class="channel">Canada</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq" class="section-pad">
     <div class="container">
@@ -379,6 +601,7 @@
         <p class="eyebrow">FAQ</p>
         <h2>Questions people ask before starting</h2>
       </div>
+      <div class="faq-grid">
       <div class="faq">
         <details open>
           <summary>Do you guarantee my channel will get monetized? <span class="plus">+</span></summary>
@@ -386,7 +609,7 @@
         </details>
         <details>
           <summary>What's the difference between the three packages? <span class="plus">+</span></summary>
-          <p>Watch Hours Only is strategy and tutorials built to push an existing channel over the 4,000-hour line. Long-Form Monetization is full done-for-you production in a faceless AI niche over three months — 3 long-form videos a week, a daily 1-minute Short Monday through Saturday, all content creation, editing and posting handled for you, plus ongoing channel strategy and management toward YouTube Partner Program eligibility. Shorts Monetization is a one-time build of an automated Shorts system, run over a 3-month engagement paid upfront, aimed at the Shorts view threshold.</p>
+          <p>Watch Hours Only is a 1-month plan of strategy and tutorials built to push an existing channel over the 4,000-hour line. Long-Form Monetization is full done-for-you production in a faceless AI niche over three months — 3 long-form videos a week, a daily 1-minute Short Monday through Saturday, all content creation, editing and posting handled for you, plus ongoing channel strategy and management toward YouTube Partner Program eligibility. Shorts Monetization is a one-time build of an automated Shorts system, run over a 3-month engagement paid upfront, aimed at the Shorts view threshold.</p>
         </details>
         <details>
           <summary>Do I keep ownership of my channel? <span class="plus">+</span></summary>
@@ -401,6 +624,22 @@
           <p>Yes. A lot of clients start with Watch Hours Only or Subscribers strategy, then move into full-service production once they see the plan working.</p>
         </details>
       </div>
+        <aside class="faq-side">
+          <div class="help-card">
+            <span class="deco" aria-hidden="true"></span>
+            <h3>Still have questions?</h3>
+            <p>Every channel is different. Tell us where yours is and we'll give you a straight answer.</p>
+            <div class="chat" aria-hidden="true">
+              <div class="top"><span class="av"><svg viewBox="0 0 40 40"><path d="M7.5 15H16L20 25L28.5 5H38L24.5 35H15.5Z" fill="#0b0b0c"/><path d="M4.5 2.5V14.5L14.5 8.5Z" fill="#E4161B"/></svg></span><div><strong>ViralMoniPoint</strong><span>Online · replies fast</span></div></div>
+              <div class="msg out">Hi! Which package fits my channel?</div>
+              <div class="msg in">Send us your channel link and current watch hours. We'll recommend the right plan on a free 15-minute call.</div>
+              <div class="typing"><i></i><i></i><i></i></div>
+            </div>
+            <a href="#contact" class="btn btn-primary btn-block">Book a free discovery call</a>
+            <div class="help-meta"><span><b>15 min</b> · free call</span><span><b>No</b> obligation</span></div>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -412,6 +651,7 @@
         <h2>Tell us about your channel</h2>
         <p>Pick a package (or tell us you're not sure yet) and we'll follow up to book your discovery call.</p>
       </div>
+      <div class="contact-grid">
       <div class="contact-layout">
         <form id="leadForm">
           <div class="field">
@@ -430,7 +670,7 @@
             <label for="package">Package</label>
             <select id="package" name="package">
               <option value="">Not sure yet</option>
-              <option value="Watch Hours Only ($300 one-time)">Watch Hours Only — $300 one-time</option>
+              <option value="Watch Hours Only ($300, 1-month plan)">Watch Hours Only — $300, 1-month plan</option>
               <option value="Long-Form Monetization ($400/mo, 3-month plan)">Long-Form Monetization — $400/mo, 3-month plan</option>
               <option value="Shorts Monetization AI Automation ($1,100 one-time)">Shorts Monetization — $1,100 one-time</option>
             </select>
@@ -442,6 +682,46 @@
           <button type="submit" class="btn btn-primary btn-block" id="formSubmit">Send &amp; book my discovery call</button>
           <p id="formNote"></p>
         </form>
+      </div>
+        <figure class="contact-visual" aria-label="Illustration of a monetized channel dashboard">
+          <div class="laptop" aria-hidden="true">
+            <div class="lid">
+              <div class="cam"></div>
+              <div class="screen">
+                <div class="bar"><i></i><i></i><i></i><span>Channel analytics</span></div>
+                <div class="body">
+                  <div class="side"><b class="on"></b><b></b><b></b><b></b><b></b></div>
+                  <div class="main">
+                    <div class="head">
+                      <div class="ch"><span class="av"></span><strong>Your Channel</strong></div>
+                      <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Monetized</span>
+                    </div>
+                    <div class="tiles">
+                      <div class="tile"><div class="k">Watch hours · 365d</div><div class="v">4,126 <small>/ 4,000</small></div><div class="meter"><i></i></div></div>
+                      <div class="tile"><div class="k">Subscribers</div><div class="v">1,284 <small>/ 1,000</small></div><div class="meter"><i></i></div></div>
+                      <div class="tile"><div class="k">Views · 28d</div><div class="v">86.4K</div><div class="up">▲ 312%</div></div>
+                    </div>
+                    <div class="chart">
+                      <div class="k">Watch hours, last 30 days</div>
+                      <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+                        <defs><linearGradient id="wh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC400" stop-opacity="0.45"/><stop offset="1" stop-color="#FFC400" stop-opacity="0"/></linearGradient></defs>
+                        <path d="M0 74 L20 72 L40 70 L60 71 L80 66 L100 63 L120 64 L140 57 L160 52 L180 50 L200 41 L220 36 L240 30 L260 22 L280 15 L300 8 L300 80 L0 80 Z" fill="url(#wh)"/>
+                        <path d="M0 74 L20 72 L40 70 L60 71 L80 66 L100 63 L120 64 L140 57 L160 52 L180 50 L200 41 L220 36 L240 30 L260 22 L280 15 L300 8" fill="none" stroke="#0b0b0c" stroke-width="2.2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+                        <circle cx="300" cy="8" r="3.5" fill="#E4161B"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="base"></div>
+            <div class="toast" aria-hidden="true">
+              <span class="ic"><svg viewBox="0 0 12 12"><path d="M3.5 2L10 6L3.5 10Z"/></svg></span>
+              <div><strong>Monetization approved</strong><span>Partner Program · eligible</span></div>
+            </div>
+          </div>
+          <figcaption>Illustrative dashboard. Figures are examples, not a specific client.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -458,6 +738,7 @@
       <div class="footer-links">
         <a href="#how">How It Works</a>
         <a href="#packages">Packages</a>
+        <a href="#testimonials">Testimonials</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
