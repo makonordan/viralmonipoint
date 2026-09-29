@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BQFXSMT7K3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BQFXSMT7K3');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViralMoniPoint Partners — Earn for Every Creator You Refer</title>
+<meta name="description" content="ViralMoniPoint's partner program for clients: get your partner code, share your link, and earn 10–15% commission on every package your referrals buy.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FFC400">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ViralMoniPoint">
+<meta property="og:url" content="https://viralmonipoint.com/partners.html">
+<meta property="og:title" content="ViralMoniPoint Partners — Earn for Every Creator You Refer">
+<meta property="og:description" content="Get your partner code, share your link, and earn 10–15% commission on every package your referrals buy.">
+<meta property="og:image" content="https://viralmonipoint.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .p-hero{padding-block:64px 56px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:48px;align-items:center;}
+  @media (max-width:900px){ .p-hero{grid-template-columns:1fr;gap:36px;padding-block:48px;} }
+  .p-hero h1{font-size:clamp(36px,5.4vw,60px);}
+  .eligible{display:flex;gap:10px;align-items:flex-start;background:var(--yellow-soft);border-radius:12px;padding:12px 14px;font-size:14px;font-weight:600;color:#4d3900;margin:0 0 26px;max-width:60ch;}
+  .eligible svg{width:18px;height:18px;flex:none;margin-top:1px;stroke:#4d3900;}
+  .rates{background:var(--ink);color:#fff;border-radius:20px;overflow:hidden;position:relative;}
+  .rates::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--yellow);}
+  .rates h3{font-family:'Montserrat';font-weight:900;font-size:19px;margin:0;padding:20px 20px 4px;}
+  .rates p.sub{margin:0;padding:0 20px 14px;font-size:13px;color:#9a9aa2;}
+  .rates table{width:100%;border-collapse:collapse;}
+  .rates th, .rates td{padding:13px 20px;text-align:left;border-top:1px solid #26262b;font-size:14px;}
+  .rates th{font-family:'Montserrat';font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:#9a9aa2;font-weight:800;}
+  .rates td.m{font-family:'Montserrat';font-weight:900;font-size:18px;color:var(--yellow);white-space:nowrap;}
+  .rates td.pkg{font-weight:700;}
+  .rates td.pkg small{display:block;font-weight:600;color:#9a9aa2;font-size:12px;}
+  .rates .last td{padding-bottom:26px;}
+  @media (max-width:420px){ .rates th, .rates td{padding:11px 12px;} .rates td.m{font-size:16px;} }
+
+  .signup-grid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:48px;align-items:start;}
+  @media (max-width:960px){ .signup-grid{grid-template-columns:1fr;gap:32px;} }
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.5;color:var(--text);}
+  .check input{width:18px;height:18px;margin-top:2px;accent-color:var(--ink);flex:none;}
+  .code-card{display:none;background:var(--ink);color:#fff;border-radius:18px;padding:24px;position:relative;overflow:hidden;}
+  .code-card.show{display:block;}
+  .code-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--yellow);}
+  .code-card .lbl{font-family:'Montserrat';font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#9a9aa2;}
+  .code-card .code{font-family:'Montserrat';font-weight:900;font-size:40px;letter-spacing:0.02em;color:var(--yellow);margin:6px 0 16px;}
+  .code-card .link{display:flex;gap:8px;align-items:center;background:#17171a;border:1px solid #26262b;border-radius:10px;padding:8px 8px 8px 12px;margin-bottom:14px;}
+  .code-card .link span{flex:1;min-width:0;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#ececf0;}
+  .code-card p{margin:0 0 16px;font-size:13.5px;color:#c9c9cf;line-height:1.55;}
+  .copy{background:var(--yellow);color:var(--ink);border:0;border-radius:8px;padding:8px 12px;font-family:inherit;font-weight:800;font-size:12.5px;cursor:pointer;flex:none;}
+  .copy:hover{background:var(--yellow-deep);}
+  .side-note{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;}
+  .side-note h3{font-family:'Montserrat';font-weight:900;font-size:18px;margin:0 0 12px;color:var(--ink);}
+  .side-note ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.55;color:var(--text);}
+
+  .terms{max-width:820px;counter-reset:t;}
+  .terms h3{font-family:'Montserrat';font-weight:800;font-size:17px;color:var(--ink);margin:26px 0 8px;}
+  .terms h3:first-child{margin-top:0;}
+  .terms p, .terms li{font-size:14.5px;line-height:1.65;color:var(--text);}
+  .terms p{margin:0 0 8px;}
+  .terms ul{margin:0 0 8px;padding-left:20px;}
+
+  .tips{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  @media (max-width:760px){ .tips{grid-template-columns:1fr;} }
+  .tip{display:flex;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;}
+  .tip .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-family:'Montserrat';font-weight:900;font-size:13px;}
+  .tip h4{margin:0 0 4px;font-size:15px;font-weight:800;color:var(--ink);}
+  .tip p{margin:0;font-size:13.5px;line-height:1.55;color:var(--grey);}
+  .avoid{margin-top:22px;background:#fdecec;border-radius:16px;padding:20px 22px;}
+  .avoid h3{margin:0 0 8px;font-family:'Montserrat';font-weight:900;font-size:17px;color:#a8141a;}
+  .avoid p, .avoid li{font-size:14px;line-height:1.6;color:#5c1013;}
+  .avoid ul{margin:6px 0 0;padding-left:20px;}
+
+  .templates{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:960px){ .templates{grid-template-columns:1fr;} }
+  .tpl{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;}
+  .tpl h4{margin:0;font-size:14px;font-weight:800;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .tpl pre{margin:0;white-space:pre-wrap;font-family:inherit;font-size:13.5px;line-height:1.55;color:var(--text);background:var(--paper-2);border-radius:10px;padding:12px;flex:1;}
+  .assets{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+  .p-links{display:flex;gap:22px;align-items:center;}
+  .p-links a{font-size:14px;font-weight:700;color:var(--grey);text-decoration:none;}
+  .p-links a:hover{color:var(--ink);}
+  @media (max-width:860px){ .p-links{display:none;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+    <a href="/" class="logo" aria-label="ViralMoniPoint home">
+      <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="badge" width="40" height="40" rx="9"/><g transform="translate(1 2) scale(0.92)"><path class="v" d="M7.5 15H16L20 25L28.5 5H38L24.5 35H15.5Z"/><path class="play" d="M4.5 2.5V14.5L14.5 8.5Z"/></g></svg>
+      <span class="wordmark"><span class="name">ViralMoniPoint</span><span class="tag">Partner Program</span></span>
+    </a>
+    <nav class="p-links">
+      <a href="#signup">Get your code</a>
+      <a href="#terms">Terms</a>
+      <a href="#growth">Growth guide</a>
+      <a href="#resources">Resources</a>
+    </nav>
+    <a href="#signup" class="btn btn-primary">Sign up</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="p-hero container">
+    <div>
+      <p class="eyebrow">Partner program</p>
+      <h1 class="display">Earn for every creator <span class="accent">you refer</span><span class="dot">.</span></h1>
+      <p class="lead" style="font-size:18px;line-height:1.6;color:var(--grey);max-width:58ch;margin:0 0 22px">Know creators who want to get monetized? Share your partner link. When someone you refer buys a package, you earn 10% of what they pay, rising to 15% once you've brought in three paying clients.</p>
+      <p class="eligible"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><span>The partner program is for ViralMoniPoint clients. Sign up once your package payment has been confirmed.</span></p>
+      <div class="hero-actions" style="margin-bottom:0">
+        <a href="#signup" class="btn btn-primary">Get my partner code</a>
+        <a href="#terms" class="btn btn-secondary">Read the terms</a>
+      </div>
+    </div>
+    <div class="rates">
+      <h3>What you earn</h3>
+      <p class="sub">Per paying client you refer · USD</p>
+      <table>
+        <thead><tr><th>Package</th><th>10%</th><th>15%*</th></tr></thead>
+        <tbody>
+          <tr><td class="pkg">Watch Hours Only<small>$300</small></td><td class="m">$30</td><td class="m">$45</td></tr>
+          <tr><td class="pkg">Long-Form Monetization<small>$1,200 total</small></td><td class="m">$120</td><td class="m">$180</td></tr>
+          <tr class="last"><td class="pkg">Shorts Monetization<small>$1,100</small></td><td class="m">$110</td><td class="m">$165</td></tr>
+        </tbody>
+      </table>
+      <p class="sub" style="padding-top:0;padding-bottom:24px">*15% applies from your fourth paying referral onwards.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-pad alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Four steps to your first payout</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="num mono">01</div><h3>Get your code</h3><p>Sign up below after your package payment is confirmed. You'll get your partner code and personal link straight away.</p></div>
+        <div class="step"><div class="num mono">02</div><h3>Share your link</h3><p>Send your link to creators who want to get monetized, or ask them to enter your code on the contact form or chat.</p></div>
+        <div class="step"><div class="num mono">03</div><h3>They buy a package</h3><p>Your commission is earned once their payment clears and 14 days pass without a refund request.</p></div>
+        <div class="step"><div class="num mono">04</div><h3>Get paid monthly</h3><p>Commissions are paid on the 5th of each month by bank transfer or mobile money, from a $20 minimum.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGN UP -->
+  <section id="signup" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Sign up</p>
+        <h2>Get your partner code</h2>
+        <p>Takes a minute. Your code is recorded with the team so referrals are credited to you.</p>
+      </div>
+      <div class="signup-grid">
+        <div>
+          <div class="contact-layout" id="signupBox" style="max-width:none">
+            <form id="partnerForm">
+              <div class="field"><label for="pName">Full name</label><input id="pName" type="text" required maxlength="80"></div>
+              <div class="field"><label for="pEmail">Email</label><input id="pEmail" type="email" required></div>
+              <div class="field"><label for="pPhone">WhatsApp number</label><input id="pPhone" type="tel" required placeholder="+234 803 000 0000"></div>
+              <div class="field">
+                <label for="pPackage">Package you bought</label>
+                <select id="pPackage" required>
+                  <option value="">Select your package</option>
+                  <option>Watch Hours Only</option>
+                  <option>Long-Form Monetization</option>
+                  <option>Shorts Monetization</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pChannel">Where will you share your link?</label>
+                <select id="pChannel">
+                  <option>WhatsApp status &amp; groups</option>
+                  <option>Instagram</option>
+                  <option>TikTok</option>
+                  <option>YouTube</option>
+                  <option>Friends &amp; fellow creators</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pPayout">Preferred payout method</label>
+                <select id="pPayout">
+                  <option>Bank transfer</option>
+                  <option>Mobile money</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <label class="check"><input type="checkbox" id="pAgree" required><span>I'm 18 or older, my package payment has been confirmed, and I agree to the <a href="#terms">partner terms</a>.</span></label>
+              <button type="submit" class="btn btn-primary btn-block" id="pSubmit">Get my partner code</button>
+              <p id="pNote" style="display:none;margin:4px 0 0;font-size:13.5px;font-weight:600;color:var(--red)"></p>
+            </form>
+          </div>
+          <div class="code-card" id="codeCard" aria-live="polite">
+            <div class="lbl">Your partner code</div>
+            <div class="code" id="codeValue">—</div>
+            <div class="lbl" style="margin-bottom:6px">Your partner link</div>
+            <div class="link"><span id="linkValue">—</span><button class="copy" type="button" data-copy-from="linkValue">Copy</button></div>
+            <p>We've sent your code to the team to record. Share your link, or ask the creators you refer to enter <strong id="codeInline" style="color:#fff"></strong> on the contact form or in the chat.</p>
+            <a class="btn btn-wa" href="https://wa.me/2348037723164?text=Hi%20Daniel%2C%20I%27d%20like%20to%20join%20the%20ViralMoniPoint%20creator%20community." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="wa-bubble" d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z"/><path class="wa-phone" transform="translate(6.6 6.6) scale(0.45)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Join the partner community</a>
+          </div>
+        </div>
+        <aside class="side-note">
+          <h3>After you sign up</h3>
+          <ol>
+            <li>Join the community on WhatsApp. Partners get added to the Partners group for updates, promo material and the monthly leaderboard.</li>
+            <li>Grab a ready-to-send message from <a href="#resources">Resources</a> and add your link.</li>
+            <li>Point creators to the <a href="#growth">growth guide</a>. Helping people first makes referrals easy.</li>
+            <li>Reply to Daniel's WhatsApp message to confirm your payout details before the 5th.</li>
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMS -->
+  <section id="terms" class="section-pad alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Referral terms</p>
+        <h2>Partner program terms</h2>
+        <p>Plain-English rules so everyone knows how commissions work.</p>
+      </div>
+      <div class="terms">
+        <h3>1. Who can join</h3>
+        <p>The program is open to ViralMoniPoint clients aged 18 or over whose package payment has been confirmed. ViralMoniPoint may decline or remove any partner at its discretion.</p>
+        <h3>2. How referrals are credited</h3>
+        <ul>
+          <li>A referral is credited when the new client arrives through your partner link or gives your code on the contact form, in the chat, or before their discovery call.</li>
+          <li>If a client gives more than one code, the first one recorded counts.</li>
+          <li>You can't refer yourself or a channel you own or manage.</li>
+        </ul>
+        <h3>3. Commission</h3>
+        <ul>
+          <li>10% of the amount the referred client pays for their package, rising to 15% from your fourth paying referral onwards.</li>
+          <li>Commission is earned once the client's payment has cleared and 14 days have passed without a refund request. If a payment is refunded or reversed, the related commission is cancelled.</li>
+          <li>For the Long-Form plan, commission is earned on each monthly payment as it clears.</li>
+        </ul>
+        <h3>4. Payouts</h3>
+        <ul>
+          <li>Paid on the 5th of each month for commissions earned in the previous month, in USD or the local-currency equivalent, by bank transfer or mobile money.</li>
+          <li>The minimum payout is $20. Smaller balances roll over to the next month.</li>
+          <li>You're responsible for any taxes due on your commissions.</li>
+        </ul>
+        <h3>5. How to promote</h3>
+        <ul>
+          <li>Tell people you're a ViralMoniPoint partner and may earn a commission when you recommend it.</li>
+          <li>Never promise guaranteed monetization, approval by a date, or results ViralMoniPoint doesn't advertise.</li>
+          <li>Don't spam groups or strangers' inboxes, impersonate ViralMoniPoint, or run paid ads using the ViralMoniPoint name without written permission.</li>
+          <li>Never offer or promote sub4sub, paid subscribers, bots or view exchanges. They break YouTube's rules and put channels at risk.</li>
+        </ul>
+        <h3>6. Breaking the rules</h3>
+        <p>Partners who break these terms may be removed from the program and lose any unpaid commission.</p>
+        <h3>7. Changes</h3>
+        <p>ViralMoniPoint may update these terms. Partners will be told in the Partners WhatsApp group at least 14 days before a change to commission rates takes effect. Commissions already earned are paid at the rate in place when they were earned.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROWTH GUIDE -->
+  <section id="growth" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Growth guide</p>
+        <h2>10 ways to gain real subscribers</h2>
+        <p>Share these with the creators you refer, or use them on your own channel. Real subscribers who watch are what YouTube rewards.</p>
+      </div>
+      <div class="tips">
+        <div class="tip"><span class="n">1</span><div><h4>Pick one audience</h4><p>Make every video for the same kind of viewer. A focused channel tells YouTube exactly who to recommend it to.</p></div></div>
+        <div class="tip"><span class="n">2</span><div><h4>Hook in the first 15 seconds</h4><p>Open with the payoff or the question, not an intro. Most viewers decide to stay or leave almost immediately.</p></div></div>
+        <div class="tip"><span class="n">3</span><div><h4>Titles and thumbnails as a pair</h4><p>The thumbnail shows the moment, the title adds the curiosity. Test a new thumbnail if click-through stays low.</p></div></div>
+        <div class="tip"><span class="n">4</span><div><h4>Ask for the subscribe at the right time</h4><p>Ask after you've delivered something useful, and give a reason: what they'll get from the next video.</p></div></div>
+        <div class="tip"><span class="n">5</span><div><h4>Make series, not one-offs</h4><p>Part 1, Part 2 and playlists keep people watching the next video, which builds watch hours and loyalty.</p></div></div>
+        <div class="tip"><span class="n">6</span><div><h4>Use Shorts as trailers</h4><p>Cut the best moment of a long video into a Short and point viewers to the full version.</p></div></div>
+        <div class="tip"><span class="n">7</span><div><h4>Post on a schedule</h4><p>A steady rhythm your audience can expect beats bursts of uploads followed by silence.</p></div></div>
+        <div class="tip"><span class="n">8</span><div><h4>End screens and pinned comments</h4><p>Send viewers to your next best video and pin a comment that starts a conversation.</p></div></div>
+        <div class="tip"><span class="n">9</span><div><h4>Reply to comments early</h4><p>Replying in the first hours after posting builds community and brings viewers back.</p></div></div>
+        <div class="tip"><span class="n">10</span><div><h4>Read your analytics weekly</h4><p>Check where viewers drop off and which videos bring in subscribers, then make more of what works.</p></div></div>
+      </div>
+      <div class="avoid">
+        <h3>What never to do</h3>
+        <p>These break YouTube's fake-engagement rules. Subscribers get removed, Partner Program applications get rejected, and channels can be terminated:</p>
+        <ul>
+          <li>Sub4sub or "subscribe to me and I'll subscribe back" groups</li>
+          <li>Buying subscribers, views or watch hours, or paying people to subscribe</li>
+          <li>Bots, view exchanges, or looping your own videos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources" class="section-pad alt-bg">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Resources</p>
+        <h2>Ready-to-send messages</h2>
+        <p>Copy, paste and share. Your link is filled in automatically once you've got your code on this device.</p>
+      </div>
+      <div class="templates">
+        <div class="tpl">
+          <h4>WhatsApp message <button class="copy" type="button" data-copy-from="tpl1">Copy</button></h4>
+          <pre id="tpl1" data-template="Trying to get your YouTube channel monetized? 📈
+
+YouTube is doubling the watch-hour requirement to 8,000 on Feb 1, 2027. ViralMoniPoint helps creators reach eligibility with real strategy and done-for-you content. No bots, no fake views.
+
+Book a free 15-minute call here: {LINK}
+
+(I'm a ViralMoniPoint partner and may earn a commission.)"></pre>
+        </div>
+        <div class="tpl">
+          <h4>Status / Instagram caption <button class="copy" type="button" data-copy-from="tpl2">Copy</button></h4>
+          <pre id="tpl2" data-template="4,000 watch hours today. 8,000 from Feb 1, 2027. ⏳
+
+If your channel is close to monetization, now's the time. I used ViralMoniPoint and they're legit: real growth, no bots.
+
+Free discovery call 👉 {LINK}
+
+#partner #YouTubeTips #Monetization"></pre>
+        </div>
+        <div class="tpl">
+          <h4>Short DM <button class="copy" type="button" data-copy-from="tpl3">Copy</button></h4>
+          <pre id="tpl3" data-template="Hey! Saw you're growing your channel. The people who helped me with monetization do a free 15-minute call to look at your numbers: {LINK} (partner link, so I may earn a small commission)"></pre>
+        </div>
+      </div>
+      <div class="assets">
+        <a class="btn btn-secondary" href="og-image.png" download>Download share image</a>
+        <a class="btn btn-secondary" href="logo.svg" download>Download logo</a>
+        <a class="btn btn-secondary" href="/">View the main website</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <a href="/" class="logo" aria-label="ViralMoniPoint home">
+        <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="badge" width="40" height="40" rx="9"/><g transform="translate(1 2) scale(0.92)"><path class="v" d="M7.5 15H16L20 25L28.5 5H38L24.5 35H15.5Z"/><path class="play" d="M4.5 2.5V14.5L14.5 8.5Z"/></g></svg>
+        <span class="wordmark"><span class="name">ViralMoniPoint</span><span class="tag">Creator Services</span></span>
+      </a>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#packages">Packages</a>
+        <a href="/#community">Community</a>
+        <a href="#terms">Partner terms</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+    <p class="finetext">© 2026 ViralMoniPoint. Prices shown in USD. Monetization eligibility and approval are determined by YouTube and are not guaranteed. Independent creator service — not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY = 'vmp-partner';
+    var form = document.getElementById('partnerForm');
+    var note = document.getElementById('pNote');
+    var btn = document.getElementById('pSubmit');
+    var card = document.getElementById('codeCard');
+    var box = document.getElementById('signupBox');
+
+    function linkFor(code){ return 'https://viralmonipoint.com/?ref=' + code; }
+
+    function fillTemplates(code){
+      var link = code ? linkFor(code) : 'viralmonipoint.com/?ref=YOURCODE';
+      document.querySelectorAll('[data-template]').forEach(function(el){
+        el.textContent = el.getAttribute('data-template').replace('{LINK}', link);
+      });
+    }
+
+    function showCode(code){
+      document.getElementById('codeValue').textContent = code;
+      document.getElementById('codeInline').textContent = code;
+      document.getElementById('linkValue').textContent = linkFor(code);
+      box.style.display = 'none';
+      card.classList.add('show');
+      fillTemplates(code);
+    }
+
+    function makeCode(name){
+      var letters = (name.split(/\s+/)[0] || 'VMP').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 6) || 'VMP';
+      return letters + (10 + Math.floor(Math.random() * 90));
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved) showCode(saved); else fillTemplates('');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('pName').value.trim();
+      var code = makeCode(name);
+      var details = [
+        'Package bought: ' + document.getElementById('pPackage').value,
+        'Will share on: ' + document.getElementById('pChannel').value,
+        'Payout method: ' + document.getElementById('pPayout').value,
+        'Agreed to partner terms and confirmed 18+ and payment confirmed.'
+      ].join('\n');
+      btn.disabled = true;
+      btn.textContent = 'Creating your code...';
+      note.style.display = 'none';
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'partner',
+          partnerCode: code,
+          name: name,
+          email: document.getElementById('pEmail').value,
+          phone: document.getElementById('pPhone').value,
+          message: details
+        })
+      })
+      .then(function(res){ return res.json().then(function(d){ return { ok: res.ok, data: d }; }); })
+      .then(function(r){
+        if (!r.ok) throw new Error((r.data && r.data.error) || '');
+        try { localStorage.setItem(KEY, code); } catch (e) {}
+        showCode(code);
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function(err){
+        note.textContent = (err && err.message) || 'Something went wrong. Please try again, or message Daniel on WhatsApp.';
+        note.style.display = 'block';
+      })
+      .finally(function(){
+        btn.disabled = false;
+        btn.textContent = 'Get my partner code';
+      });
+    });
+
+    document.querySelectorAll('[data-copy-from]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var text = document.getElementById(b.getAttribute('data-copy-from')).textContent;
+        var done = function(){ var o = b.textContent; b.textContent = 'Copied!'; setTimeout(function(){ b.textContent = o; }, 1500); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function(){ window.prompt('Copy this:', text); });
+        } else {
+          window.prompt('Copy this:', text);
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
