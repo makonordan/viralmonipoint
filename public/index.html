@@ -500,6 +500,29 @@
   .cp-form button svg{width:18px;height:18px;stroke:var(--ink);}
   .cp-foot{font-size:10.5px;color:var(--grey-dim);text-align:center;padding:0 12px 10px;background:var(--paper);flex:none;}
 
+  /* ---------- WhatsApp ---------- */
+  .wa-float{
+    position:fixed;right:20px;bottom:92px;z-index:60;width:56px;height:56px;border-radius:50%;
+    background:#25D366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 30px -10px rgba(11,11,12,0.45);transition:transform .15s ease;
+  }
+  .wa-float:hover{transform:scale(1.06);}
+  .wa-float svg{width:30px;height:30px;}
+  .wa-bubble{fill:none;stroke:#fff;stroke-width:1.8;stroke-linejoin:round;}
+  .wa-phone{fill:#fff;}
+  .wa-float .tip{
+    position:absolute;right:66px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--ink);color:#fff;
+    font-size:12.5px;font-weight:700;padding:7px 11px;border-radius:9px;opacity:0;pointer-events:none;transition:opacity .15s ease;
+  }
+  .wa-float:hover .tip, .wa-float:focus-visible .tip{opacity:1;}
+  @media (max-width:560px){ .wa-float{right:14px;bottom:80px;width:52px;height:52px;} .wa-float .tip{display:none;} }
+  .wa-alt{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);}
+  .wa-alt span{font-size:14px;font-weight:600;color:var(--grey);}
+  .btn-wa{background:#25D366;color:#0b0b0c;}
+  .btn-wa:hover{background:#1fbd5a;}
+  .btn-wa svg{width:20px;height:20px;}
+  .btn-wa .wa-bubble{stroke:#0b0b0c;} .btn-wa .wa-phone{fill:#0b0b0c;}
+
   /* ---------- Footer ---------- */
   footer{background:var(--ink);color:#fff;padding-block:40px 36px;border-top:6px solid var(--yellow);}
   footer .logo{color:#fff;}
@@ -876,6 +899,10 @@
           <button type="submit" class="btn btn-primary btn-block" id="formSubmit">Send &amp; book my discovery call</button>
           <p id="formNote"></p>
         </form>
+        <div class="wa-alt">
+          <span>Prefer WhatsApp? Message Daniel directly.</span>
+          <a class="btn btn-wa" href="https://wa.me/2348037723164?text=Hi%20Daniel%2C%20I%20found%20you%20on%20viralmonipoint.com%20and%20I%27d%20like%20to%20get%20my%20channel%20monetized." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="wa-bubble" d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z"/><path class="wa-phone" transform="translate(6.6 6.6) scale(0.45)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Chat on WhatsApp</a>
+        </div>
       </div>
         <figure class="contact-visual" aria-label="Illustration of a monetized channel dashboard">
           <div class="laptop" aria-hidden="true">
@@ -941,6 +968,10 @@
   </div>
 </footer>
 
+<a class="wa-float" href="https://wa.me/2348037723164?text=Hi%20Daniel%2C%20I%20found%20you%20on%20viralmonipoint.com%20and%20I%27d%20like%20to%20get%20my%20channel%20monetized." target="_blank" rel="noopener" aria-label="Chat with Daniel on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path class="wa-bubble" d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5Z"/><path class="wa-phone" transform="translate(6.6 6.6) scale(0.45)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span class="tip">Chat with Daniel on WhatsApp</span>
+</a>
 <!-- CHAT WIDGET -->
 <button class="chat-launch" id="chatLaunch" aria-controls="chatPanel" aria-expanded="false">
   <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span>
