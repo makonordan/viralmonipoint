@@ -30,7 +30,7 @@ export type Tool = {
 export const TOOLS: Tool[] = [
   // Monetization & Eligibility
   { slug: "watch-hours-calculator", name: "YouTube Watch Hours Calculator", description: "See how many watch hours your channel has and how far you are from 4,000.", category: "Monetization & Eligibility", icon: "clock", cta: "watchHours", live: false },
-  { slug: "monetization-eligibility-checker", name: "YPP Eligibility Checker", description: "Check your numbers against every YouTube Partner Program threshold.", category: "Monetization & Eligibility", icon: "check", cta: "watchHours", live: false },
+  { slug: "ypp-eligibility-checker", name: "YPP Eligibility Checker", description: "Check your subscribers, watch hours and Shorts views against both YouTube Partner Program tiers.", category: "Monetization & Eligibility", icon: "check", cta: "watchHours", live: true },
   { slug: "shorts-views-calculator", name: "Shorts Views Calculator", description: "Work out the daily Shorts views you need to hit the 90-day threshold.", category: "Monetization & Eligibility", icon: "bolt", cta: "shorts", live: false },
   { slug: "youtube-earnings-calculator", name: "YouTube Earnings Estimator", description: "Estimate ad revenue from views and RPM, with low, typical and high ranges.", category: "Monetization & Eligibility", icon: "dollar", cta: "longForm", live: false },
   { slug: "monetization-timeline-calculator", name: "Monetization Timeline Calculator", description: "Estimate how long it could take to qualify at your current pace.", category: "Monetization & Eligibility", icon: "calendar", cta: "watchHours", live: false },
