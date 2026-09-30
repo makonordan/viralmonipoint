@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Brand tokens — the same palette as public/styles.css so /tools matches the homepage. */
+@theme {
+  --color-paper: #ffffff;
+  --color-paper-2: #f7f6f2;
+  --color-line: #e6e4dd;
+  --color-line-strong: #d4d1c7;
+  --color-ink: #0b0b0c;
+  --color-ink-2: #17171a;
+  --color-ink-3: #26262b;
+  --color-text: #1a1a1d;
+  --color-grey: #5c5c63;
+  --color-grey-dim: #86868d;
+  --color-yellow: #ffc400;
+  --color-yellow-deep: #f2b300;
+  --color-yellow-soft: #fff4cc;
+  --color-red: #e4161b;
+  --color-green: #0b8a4f;
+  --color-green-soft: #e3f5ec;
+
+  --font-display: var(--font-montserrat), "Arial Black", sans-serif;
+  --font-sans: var(--font-manrope), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-num: var(--font-montserrat), system-ui, sans-serif;
+
+  --radius-card: 18px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
