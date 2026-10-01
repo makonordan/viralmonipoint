@@ -1,6 +1,8 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  # Temporarily serving the static site from public/ while the Next.js
+  # deploy is fixed. The /tools app is kept in the repo but not deployed.
+  command = "echo static"
+  publish = "public"
   functions = "netlify/functions"
 
 [build.environment]
