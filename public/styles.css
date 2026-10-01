@@ -60,9 +60,41 @@
     nav.links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);
       flex-direction:column;gap:0;border-bottom:1px solid var(--line);}
     nav.links.open{display:flex;}
-    nav.links a{padding:16px 20px;width:100%;border-top:1px solid var(--line);}
+    nav.links > a{padding:16px 20px;width:100%;border-top:1px solid var(--line);}
+    nav.links{max-height:calc(100vh - 70px);overflow-y:auto;}
     #navToggle{display:flex;}
     .nav-cta .btn-primary{padding:10px 14px;font-size:13px;}
+  }
+
+  /* ---------- Tools flyout (public/tools-menu.js) ---------- */
+  .tools-trigger{display:flex;align-items:center;gap:4px;background:none;border:0;padding:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;color:var(--grey);}
+  .tools-trigger:hover, .tools-menu.open .tools-trigger{color:var(--ink);}
+  .tools-trigger svg{width:16px;height:16px;transition:transform .15s ease;}
+  .tools-menu.open .tools-trigger svg{transform:rotate(180deg);}
+  .tools-flyout{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);
+    box-shadow:0 24px 40px -24px rgba(11,11,12,0.35);max-height:calc(100vh - 70px);overflow-y:auto;}
+  .tools-flyout[hidden]{display:none;}
+  .tools-flyout .container{padding-top:24px;padding-bottom:20px;}
+  .tf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px 32px;}
+  .tf-cat{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-family:'Montserrat';font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;}
+  .tf-cat::before{content:"";width:16px;height:3px;border-radius:2px;background:var(--red);}
+  .tf-cat:hover{color:var(--red);}
+  .tf-col ul{list-style:none;margin:0;padding:0;}
+  .tf-col li a{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 -8px;padding:6px 8px;border-radius:8px;font-size:14px;font-weight:600;color:var(--text);text-decoration:none;}
+  .tf-col li a:hover{background:var(--yellow-soft);color:var(--ink);}
+  .tf-col .soon{flex:none;font-size:10px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey-dim);}
+  .tf-more{display:inline-block;margin-top:4px;font-size:13px;font-weight:800;color:var(--ink);}
+  .tf-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);}
+  .tf-foot span{font-size:13px;font-weight:600;color:var(--grey);}
+  .tf-foot .btn{padding:10px 16px;font-size:13.5px;}
+  @media (max-width:860px){
+    /* Inside the mobile hamburger menu the flyout becomes an accordion. */
+    nav.links .tools-menu{width:100%;border-top:1px solid var(--line);}
+    nav.links .tools-trigger{width:100%;justify-content:space-between;padding:16px 20px;}
+    nav.links .tools-flyout{position:static;box-shadow:none;border-bottom:0;max-height:none;background:var(--paper-2);}
+    nav.links .tools-flyout .container{padding:8px 20px 16px;}
+    .tf-grid{grid-template-columns:1fr;gap:16px;}
+    .tf-foot .btn{width:100%;}
   }
 
   /* ---------- Hero ---------- */

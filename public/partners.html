@@ -87,6 +87,7 @@
   .tpl h4{margin:0;font-size:14px;font-weight:800;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:10px;}
   .tpl pre{margin:0;white-space:pre-wrap;font-family:inherit;font-size:13.5px;line-height:1.55;color:var(--text);background:var(--paper-2);border-radius:10px;padding:12px;flex:1;}
   .assets{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+  .p-right{display:flex;align-items:center;gap:22px;}
   .p-links{display:flex;gap:22px;align-items:center;}
   .p-links a{font-size:14px;font-weight:700;color:var(--grey);text-decoration:none;}
   .p-links a:hover{color:var(--ink);}
@@ -101,13 +102,19 @@
       <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="badge" width="40" height="40" rx="9"/><g transform="translate(1 2) scale(0.92)"><path class="v" d="M7.5 15H16L20 25L28.5 5H38L24.5 35H15.5Z"/><path class="play" d="M4.5 2.5V14.5L14.5 8.5Z"/></g></svg>
       <span class="wordmark"><span class="name">ViralMoniPoint</span><span class="tag">Partner Program</span></span>
     </a>
-    <nav class="p-links">
-      <a href="#signup">Get your code</a>
-      <a href="#terms">Terms</a>
-      <a href="#growth">Growth guide</a>
-      <a href="#resources">Resources</a>
-    </nav>
-    <a href="#signup" class="btn btn-primary">Sign up</a>
+    <div class="p-right">
+      <div class="tools-menu" data-tools-menu>
+        <button type="button" class="tools-trigger" aria-expanded="false" aria-controls="toolsFlyout">Tools <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="tools-flyout" id="toolsFlyout" hidden></div>
+      </div>
+      <nav class="p-links">
+        <a href="#signup">Get your code</a>
+        <a href="#terms">Terms</a>
+        <a href="#growth">Growth guide</a>
+        <a href="#resources">Resources</a>
+      </nav>
+      <a href="#signup" class="btn btn-primary">Sign up</a>
+    </div>
   </div>
 </header>
 
@@ -354,6 +361,7 @@ Free discovery call 👉 {LINK}
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="/#packages">Packages</a>
+        <a href="/tools">Free Tools</a>
         <a href="/#community">Community</a>
         <a href="#terms">Partner terms</a>
         <a href="/#contact">Contact</a>
@@ -454,5 +462,6 @@ Free discovery call 👉 {LINK}
     });
   })();
 </script>
+<script src="tools-menu.js" defer></script>
 </body>
 </html>

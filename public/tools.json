@@ -1,0 +1,215 @@
+{
+  "categories": [
+    {
+      "id": "monetization",
+      "name": "Monetization & Eligibility",
+      "description": "Check eligibility, estimate earnings and plan your path to the YouTube Partner Program."
+    },
+    {
+      "id": "content-creation",
+      "name": "Content Creation",
+      "description": "Ideas, titles, hooks and scripts for videos people want to watch."
+    },
+    {
+      "id": "optimization",
+      "name": "Optimization",
+      "description": "Sharpen titles, descriptions, tags and thumbnails to win more clicks and watch time."
+    },
+    {
+      "id": "setup-utility",
+      "name": "Setup & Utility",
+      "description": "Channel setup helpers and everyday YouTube utilities."
+    }
+  ],
+  "tools": [
+    {
+      "slug": "watch-hours-calculator",
+      "name": "YouTube Watch Hours Calculator",
+      "description": "See how many watch hours your channel has and how far you are from 4,000.",
+      "category": "monetization",
+      "icon": "clock",
+      "cta": "watchHours",
+      "live": false
+    },
+    {
+      "slug": "ypp-eligibility-checker",
+      "name": "YPP Eligibility Checker",
+      "description": "Check your subscribers, watch hours and Shorts views against both YouTube Partner Program tiers.",
+      "category": "monetization",
+      "icon": "check",
+      "cta": "watchHours",
+      "live": true
+    },
+    {
+      "slug": "shorts-views-calculator",
+      "name": "Shorts Views Calculator",
+      "description": "Work out the daily Shorts views you need to hit the 90-day threshold.",
+      "category": "monetization",
+      "icon": "bolt",
+      "cta": "shorts",
+      "live": false
+    },
+    {
+      "slug": "youtube-earnings-calculator",
+      "name": "YouTube Earnings Estimator",
+      "description": "Estimate ad revenue from views and RPM, with low, typical and high ranges.",
+      "category": "monetization",
+      "icon": "dollar",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "monetization-timeline-calculator",
+      "name": "Monetization Timeline Calculator",
+      "description": "Estimate how long it could take to qualify at your current pace.",
+      "category": "monetization",
+      "icon": "calendar",
+      "cta": "watchHours",
+      "live": false
+    },
+    {
+      "slug": "ypp-2027-requirements-calculator",
+      "name": "Feb 2027 YPP Change Calculator",
+      "description": "See what the doubled watch-hour and Shorts thresholds mean for your channel.",
+      "category": "monetization",
+      "icon": "alert",
+      "cta": "watchHours",
+      "live": false
+    },
+    {
+      "slug": "youtube-title-generator",
+      "name": "YouTube Title Generator",
+      "description": "Turn a topic into proven title formats you can adapt.",
+      "category": "content-creation",
+      "icon": "type",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "video-hook-generator",
+      "name": "Video Hook Generator",
+      "description": "Write opening lines that keep viewers past the first 15 seconds.",
+      "category": "content-creation",
+      "icon": "sparkle",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "video-script-outline",
+      "name": "Video Script Outline Builder",
+      "description": "Structure a video from hook to call to action in minutes.",
+      "category": "content-creation",
+      "icon": "list",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "faceless-niche-finder",
+      "name": "Faceless Channel Niche Finder",
+      "description": "Explore faceless niche ideas matched to your interests and format.",
+      "category": "content-creation",
+      "icon": "compass",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "content-calendar-planner",
+      "name": "Content Calendar Planner",
+      "description": "Plan a realistic upload schedule you can actually stick to.",
+      "category": "content-creation",
+      "icon": "calendar",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "title-length-checker",
+      "name": "Title Length Checker",
+      "description": "Check title length and preview how it truncates on mobile and desktop.",
+      "category": "optimization",
+      "icon": "ruler",
+      "cta": "watchHours",
+      "live": false
+    },
+    {
+      "slug": "youtube-description-generator",
+      "name": "YouTube Description Generator",
+      "description": "Build a structured description with chapters, links and keywords.",
+      "category": "optimization",
+      "icon": "text",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "youtube-tag-generator",
+      "name": "YouTube Tag Generator",
+      "description": "Generate keyword variations from your topic to use as tags.",
+      "category": "optimization",
+      "icon": "tag",
+      "cta": "watchHours",
+      "live": false
+    },
+    {
+      "slug": "thumbnail-text-checker",
+      "name": "Thumbnail Text Checker",
+      "description": "Keep thumbnail text short and readable at small sizes.",
+      "category": "optimization",
+      "icon": "image",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "audience-retention-calculator",
+      "name": "Audience Retention Calculator",
+      "description": "Convert average view duration into retention and watch-hour impact.",
+      "category": "optimization",
+      "icon": "chart",
+      "cta": "watchHours",
+      "live": false
+    },
+    {
+      "slug": "engagement-rate-calculator",
+      "name": "Engagement Rate Calculator",
+      "description": "Measure likes and comments against views to benchmark your videos.",
+      "category": "optimization",
+      "icon": "heart",
+      "cta": "watchHours",
+      "live": false
+    },
+    {
+      "slug": "channel-name-generator",
+      "name": "Channel Name Generator",
+      "description": "Brainstorm memorable channel names from your niche and style.",
+      "category": "setup-utility",
+      "icon": "id",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "youtube-chapters-generator",
+      "name": "YouTube Chapters Generator",
+      "description": "Format timestamps into chapters YouTube recognises.",
+      "category": "setup-utility",
+      "icon": "film",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "channel-art-size-guide",
+      "name": "Channel Art Size Guide",
+      "description": "Every YouTube image size in one place: banner, thumbnail, profile and more.",
+      "category": "setup-utility",
+      "icon": "layout",
+      "cta": "longForm",
+      "live": false
+    },
+    {
+      "slug": "script-length-calculator",
+      "name": "Script Length Calculator",
+      "description": "Convert word count to video length, and video length to word count.",
+      "category": "setup-utility",
+      "icon": "timer",
+      "cta": "shorts",
+      "live": false
+    }
+  ]
+}

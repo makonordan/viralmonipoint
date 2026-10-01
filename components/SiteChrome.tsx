@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ToolsMenu } from "@/components/ToolsMenu";
 import { CONTACT_URL, PACKAGES_URL } from "@/lib/packages";
 
 export function Logo({ tag = "Creator Services", dark = false }: { tag?: string; dark?: boolean }) {
@@ -24,7 +25,6 @@ export function Logo({ tag = "Creator Services", dark = false }: { tag?: string;
 }
 
 const NAV = [
-  { href: "/tools", label: "Tools" },
   { href: PACKAGES_URL, label: "Packages" },
   { href: CONTACT_URL, label: "Contact" },
 ];
@@ -35,6 +35,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-4 px-5 py-3">
         <Logo tag="Free Creator Tools" />
         <nav className="flex items-center gap-5 sm:gap-7" aria-label="Main">
+          <ToolsMenu />
           {NAV.map((item) => (
             <Link
               key={item.href}

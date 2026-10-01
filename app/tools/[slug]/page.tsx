@@ -1,13 +1,13 @@
 // Placeholder for tools that aren't built yet. A built tool gets its own folder
 // (app/tools/<slug>/page.tsx), which takes priority over this dynamic route; set
-// `live: true` for it in lib/tools.ts so it drops out of the list below.
+// `"live": true` for it in public/tools.json so it drops out of the list below.
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { Icon } from "@/components/Icon";
 import { ToolCard } from "@/components/ToolCard";
 import { ToolLayout, toolMetadata } from "@/components/ToolLayout";
-import { getTool, TOOLS } from "@/lib/tools";
+import { getCategory, getTool, TOOLS } from "@/lib/tools";
 
 export const dynamicParams = false;
 
@@ -29,10 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ComingSoon({ params }: { params: Promise<{ slug: string }> }) {
   const tool = getTool((await params).slug);
   if (!tool) notFound();
+  const category = getCategory(tool.category);
   const related = TOOLS.filter((t) => t.category === tool.category && t.slug !== tool.slug).slice(0, 3);
 
   return (
-    <ToolLayout h1={tool.name} eyebrow={tool.category} intro={tool.description} trustNote={false}>
+    <ToolLayout h1={tool.name} eyebrow={category.name} intro={tool.description} trustNote={false}>
       <div className="flex flex-col items-start gap-4 rounded-card border border-line-strong bg-paper-2 p-7 sm:flex-row sm:items-center">
         <span className="flex size-14 flex-none items-center justify-center rounded-full bg-ink text-yellow shadow-[0_0_0_3px_var(--color-yellow)]">
           <Icon name={tool.icon} className="size-6" />
@@ -50,7 +51,7 @@ export default async function ComingSoon({ params }: { params: Promise<{ slug: s
 
       {related.length > 0 && (
         <section className="mt-12">
-          <h2 className="mb-5 font-display text-2xl font-black tracking-[-0.02em] text-ink">More {tool.category.toLowerCase()} tools</h2>
+          <h2 className="mb-5 font-display text-2xl font-black tracking-[-0.02em] text-ink">More {category.name.toLowerCase()} tools</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((t) => (
               <ToolCard key={t.slug} tool={t} />
