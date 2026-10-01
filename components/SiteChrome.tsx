@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ToolsMenu } from "@/components/ToolsMenu";
-import { CONTACT_URL, PACKAGES_URL } from "@/lib/packages";
+import { PACKAGES_URL } from "@/lib/packages";
 
 export function Logo({ tag = "Creator Services", dark = false }: { tag?: string; dark?: boolean }) {
   return (
@@ -25,8 +25,8 @@ export function Logo({ tag = "Creator Services", dark = false }: { tag?: string;
 }
 
 const NAV = [
-  { href: PACKAGES_URL, label: "Packages" },
-  { href: CONTACT_URL, label: "Contact" },
+  { href: PACKAGES_URL, label: "Price" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function SiteHeader() {
@@ -40,7 +40,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-bold text-grey no-underline hover:text-ink max-sm:[&:nth-child(2)]:hidden"
+              className="text-sm font-bold text-grey no-underline hover:text-ink max-[480px]:[&:nth-child(2)]:hidden"
             >
               {item.label}
             </Link>
@@ -59,10 +59,10 @@ export function SiteFooter() {
           <Logo dark />
           <div className="flex flex-wrap gap-5 text-[13.5px] font-semibold">
             <Link href="/tools" className="text-[#c9c9cf] no-underline hover:text-yellow">Free Tools</Link>
-            <Link href={PACKAGES_URL} className="text-[#c9c9cf] no-underline hover:text-yellow">Packages</Link>
-            <Link href="/#faq" className="text-[#c9c9cf] no-underline hover:text-yellow">FAQ</Link>
-            <Link href={CONTACT_URL} className="text-[#c9c9cf] no-underline hover:text-yellow">Contact</Link>
+            <Link href={PACKAGES_URL} className="text-[#c9c9cf] no-underline hover:text-yellow">Price</Link>
+            <Link href="/blog" className="text-[#c9c9cf] no-underline hover:text-yellow">Blog</Link>
             <a href="/partners.html" className="text-[#c9c9cf] no-underline hover:text-yellow">Partners</a>
+            <Link href="/privacy" className="text-[#c9c9cf] no-underline hover:text-yellow">Privacy Policy</Link>
           </div>
         </div>
         <p className="m-0 max-w-[80ch] text-xs leading-relaxed text-[#8a8a92]">

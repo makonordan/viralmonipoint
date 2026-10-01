@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/packages";
 import { TOOLS } from "@/lib/tools";
 
@@ -7,6 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, priority: 1 },
     { url: `${SITE_URL}/tools`, priority: 0.9 },
     ...TOOLS.filter((t) => t.live).map((t) => ({ url: `${SITE_URL}/tools/${t.slug}`, priority: 0.8 })),
+    { url: `${SITE_URL}/blog`, priority: 0.8 },
+    ...getAllPosts().map((p) => ({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: p.date, priority: 0.7 })),
     { url: `${SITE_URL}/partners.html`, priority: 0.4 },
+    { url: `${SITE_URL}/privacy`, priority: 0.2 },
   ];
 }

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Brand tokens — the same palette as public/styles.css so /tools matches the homepage. */
 @theme {
@@ -44,4 +45,24 @@
 
 @utility tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/* Long-form text (blog posts, privacy policy) in brand colours. */
+@utility prose-brand {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-links: var(--color-ink);
+  --tw-prose-bullets: var(--color-red);
+  --tw-prose-counters: var(--color-red);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-yellow);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-th-borders: var(--color-line-strong);
+  --tw-prose-td-borders: var(--color-line);
+  & :where(h2, h3) { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.02em; }
+  & :where(a) { text-decoration-color: var(--color-yellow-deep); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  & :where(a):hover { background: var(--color-yellow-soft); }
+  & :where(table) { font-size: 0.95em; }
+  & :where(thead th) { font-family: var(--font-display); font-weight: 800; }
 }
