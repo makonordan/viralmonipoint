@@ -1,13 +1,16 @@
 [build]
-  # Temporarily serving the static site from public/ while the Next.js
-  # deploy is fixed. The /tools app is kept in the repo but not deployed.
-  command = "echo static"
-  publish = "public"
+  command = "npm run build"
+  publish = ".next"
   functions = "netlify/functions"
 
 [build.environment]
   # Next.js 16 needs Node 20.9+.
   NODE_VERSION = "22"
+
+# The Netlify Next.js adapter serves the Next.js build (pages, rewrites,
+# static files from public/). Without it the .next folder is served raw.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [functions]
   node_bundler = "esbuild"
